@@ -9,7 +9,7 @@ categories:
 keywords:
 toc: false
 description: "css3的背景色渐变"
-cover: ./backgrbackground-gradient/bg.jpg
+cover: /img/html_css.jpg
 ---
 ## 线性渐变
 ```

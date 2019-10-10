@@ -433,7 +433,7 @@ subtitle:
 #-------------------------------------
 # 側邊欄顯示設置
 aside:
-  position: left # left or right
+  position: right # left or right
   card_author: true
   card_announcement: true
   card_recent_post: true

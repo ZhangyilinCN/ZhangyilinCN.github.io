@@ -1,8 +1,11 @@
 ---
 title: 背景色渐变
 date: 2019-10-10 15:05:00
-tags: html,css
-categories: "H5+C3"
+tags: 
+    - "Html"
+    - "Css"
+categories: 
+    - "H5+C3"
 keywords:
 description: "我是简洁的"
 # top_img: （除非特定需要，可以不写）

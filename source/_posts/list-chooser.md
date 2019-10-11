@@ -7,7 +7,7 @@ categories:
   - "H5+C3"
 keywords:
 description: "使用css的选择器来控制li的单独样式"
-top: false
+toc: false
 ---
 
 ### :nth-child(2)选取第几个标签，"2 可以是你想要的数字"

@@ -7,6 +7,7 @@ categories:
     - "H5+C3"
 keywords:
 description: "纯css实现动态省略号"
+toc: false
 ---
 ### 通过使用css的keyframes来实现动态省略号
 **Css：**

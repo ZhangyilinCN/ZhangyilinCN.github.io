@@ -2,7 +2,6 @@
 title: nth-child选择器
 date: 2019-10-11 13:19:37
 tags:
-  - "Html"
   - "Css"
 categories:
   - "H5+C3"

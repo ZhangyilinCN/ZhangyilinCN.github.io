@@ -19,7 +19,7 @@ menu:
 
 # Favicon
 # ---------------
-favicon: /img/favicon.ico
+favicon: http://pzcertt0r.bkt.clouddn.com/favicon.ico
 
 # PWA
 # See https://github.com/JLHwung/hexo-offline
@@ -132,11 +132,11 @@ cdn:
 # Post info settings
 # ---------------
 # avatar: /img/avatar.png
-avatar: /img/avatar.jpg
+avatar: http://pzcertt0r.bkt.clouddn.com/avatar.jpg
 
 # the banner image of index
 # if the banner of another page not setting,it will show the top_img
-top_img: /img/topImg.jpg
+top_img: http://pzcertt0r.bkt.clouddn.com/topImg.jpg
 
 #the banner image of post
 # if the post not set the post cover and post top image, it will show it
@@ -301,10 +301,10 @@ reward:
   enable: true
   QR_code:
     - itemlist:
-        img: /img/wechat.jpg
+        img: http://pzcertt0r.bkt.clouddn.com/wechatpay.jpg
         text: 微信
     - itemlist:
-        img: /img/alipay.jpg
+        img: http://pzcertt0r.bkt.clouddn.com/alipay.jpg
         text: 支付宝
 
 # 推薦文章

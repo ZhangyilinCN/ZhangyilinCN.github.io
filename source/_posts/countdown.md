@@ -11,7 +11,7 @@ description: "页面倒计时"
 toc: false
 ---
 
-![](http://pzcertt0r.bkt.clouddn.com/countdown.gif)
+![](http://pzcertt0r.bkt.clouddn.com/countdown01.gif)
 
 ---
 

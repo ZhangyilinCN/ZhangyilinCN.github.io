@@ -35,10 +35,10 @@ toc: false
 }
 ```
 ``` html
-<script src="http://pzcertt0r.bkt.clouddn.com/jquery-1.11.1.min.js"></script> 
 <div class="main"></div>
 ```
 ``` javascript
+// 记得要先引入Jquery.js
 $(function () {
     //在页面显示出全部盒子
     var boxs=''

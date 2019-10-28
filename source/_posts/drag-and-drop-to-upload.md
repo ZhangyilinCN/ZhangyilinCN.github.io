@@ -58,7 +58,6 @@ form > button {
 }
 ```
 ```html
-<script src="http://pzcertt0r.bkt.clouddn.com/jquery-1.11.1.min.js"></script>
 <form id="#uploading" action="#" method="post" enctype="multipart/form-data" id="form1">
     <div class="uploading">
         <p>文件上传</p>
@@ -68,6 +67,7 @@ form > button {
 </form>
 ```
 ``` javascript 
+// 记得要先引入Jquery.js
 $(document).on("drop", function(event) {
     var e = event || window.event;
     e.preventDefault();

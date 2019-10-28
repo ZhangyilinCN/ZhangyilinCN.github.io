@@ -64,7 +64,6 @@ input[type=number]::-webkit-outer-spin-button {
 }
 ```
 ``` html
-<script src="http://pzcertt0r.bkt.clouddn.com/jquery-1.11.1.min.js"></script> 
 <div class="demo">
    <input type="text" class='demoInput'>
    <div class='numberDiv'></div>
@@ -74,6 +73,7 @@ input[type=number]::-webkit-outer-spin-button {
 </div>
 ```
 ``` javascript
+// 要先引入jquery.js
 $('.numberDiv').click(function () {
     $('.demoInput').focus();
 })

@@ -70,7 +70,6 @@ span {
 }
 ```
 ``` html
-<script src="http://pzcertt0r.bkt.clouddn.com/jquery-1.11.1.min.js"></script>
 <span>红包</span>
 ```
 ---
@@ -78,6 +77,7 @@ span {
 **因为是生成dom,对dom的反复操作,并且是使用定时器来完成，所以不推荐**
 
 ``` javascript
+// 记得要先引入Jquery.js
 /*
     a : 初始角度
     b : 到达晃动时，a为右晃动，b的初始为a的有晃动峰值

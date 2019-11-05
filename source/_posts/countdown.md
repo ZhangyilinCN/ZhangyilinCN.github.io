@@ -44,11 +44,11 @@ span {
 window.onload = function() {
   var sp = document.getElementsByTagName("span")[0];
   function fn() {
-    var future = new Date(2018, 8, 8).getTime();
+    var future = new Date(2019, 12, 12).getTime();
     var now = new Date().getTime();
     var gap = future - now;
     var gapDay = Math.floor(gap / 1000 / 60 / 60 / 24);
-    var gapHour = Math.floor(gap / 1000 / 60 / 60);
+    var gapHour = Math.floor((gap / 1000 / 60 / 60) % 24);
     if (gapHour < 10) {
       gapHour = "0" + gapHour;
     }
@@ -61,7 +61,7 @@ window.onload = function() {
       gapS = "0" + gapS;
     }
     var gapHS = Math.floor(gap % 1000);
-    if (gapHS < 100 && gapHS > 10) {
+    if (gapHS < 100) {
       gapHS = "0" + gapHS;
     } else if (gapHS < 10) {
       gapHS = "00" + gapHS;

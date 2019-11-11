@@ -8,10 +8,9 @@ categories:
   - "插件"
 keywords:
 description: "wangEditor富文本基本使用"
-toc: false
 ---
 
-# 首先下载插件：[戳我跳转](https://github.com/wangfupeng1988/wangEditor/releases)
+**首先下载插件：[戳我跳转](https://github.com/wangfupeng1988/wangEditor/releases)**
 
 ## 传统创建
 ```html
@@ -155,74 +154,120 @@ ed5.customConfig.lang = {
 ```
 ---
 
-## 自定义菜单项中的语言
+## 插入网络图片的回调
 ``` javascript 
-ed5.customConfig.lang = {
-     '设置标题': 'title',
-     '正文': 'p',
-     '链接文字': 'link text',
-     '链接': 'link',
-     '上传图片': 'upload image',
-     '上传': 'upload',
-     '创建': 'init'
-     // 还可自定添加更多
- }
-// 以上代码中的链接文字要写在链接前面，
-// 上传图片要写在上传前面，因为前者包含后者。
-// 如果不这样做，可能会出现替换不全的问题，切记切记！
+ed1.customConfig.linkImgCallback = function (url) { //可以在css中定义图片的大小
+    console.log(url) // url 即插入图片的地址
+}
 ```
 ---
 
-## 自定义菜单项中的语言
+## 插入链接的效验
 ``` javascript 
-ed5.customConfig.lang = {
-     '设置标题': 'title',
-     '正文': 'p',
-     '链接文字': 'link text',
-     '链接': 'link',
-     '上传图片': 'upload image',
-     '上传': 'upload',
-     '创建': 'init'
-     // 还可自定添加更多
- }
-// 以上代码中的链接文字要写在链接前面，
-// 上传图片要写在上传前面，因为前者包含后者。
-// 如果不这样做，可能会出现替换不全的问题，切记切记！
+ed2.customConfig.linkCheck = function (text, link) {
+     console.log(text) // 插入的文字
+     console.log(link) // 插入的链接
+     return true // 返回 true 表示校验成功
+     // return '验证失败' // 返回字符串，即校验失败的提示信息
+}
 ```
 ---
 
-## 自定义菜单项中的语言
+## 插入网络图片的效验
 ``` javascript 
-ed5.customConfig.lang = {
-     '设置标题': 'title',
-     '正文': 'p',
-     '链接文字': 'link text',
-     '链接': 'link',
-     '上传图片': 'upload image',
-     '上传': 'upload',
-     '创建': 'init'
-     // 还可自定添加更多
- }
-// 以上代码中的链接文字要写在链接前面，
-// 上传图片要写在上传前面，因为前者包含后者。
-// 如果不这样做，可能会出现替换不全的问题，切记切记！
+ed3.customConfig.linkImgCheck = function (src) {
+     console.log(src) // 图片的链接
+     return true // 返回 true 表示校验成功
+     // return '验证失败' // 返回字符串，即校验失败的提示信息
+}
 ```
 ---
 
-## 自定义菜单项中的语言
+## 配置onfocus函数
 ``` javascript 
-ed5.customConfig.lang = {
-     '设置标题': 'title',
-     '正文': 'p',
-     '链接文字': 'link text',
-     '链接': 'link',
-     '上传图片': 'upload image',
-     '上传': 'upload',
-     '创建': 'init'
-     // 还可自定添加更多
- }
-// 以上代码中的链接文字要写在链接前面，
-// 上传图片要写在上传前面，因为前者包含后者。
-// 如果不这样做，可能会出现替换不全的问题，切记切记！
+ed4.customConfig.οnfοcus=function () {  //文本框获焦执行此函数
+     console.log('获焦触发的函数1');
+}
+ ed4.customConfig.οnblur=function () {  //文本框失焦执行此函数
+    console.log('失焦触发的函数2');
+}
+```
+---
+
+## 配置字体与背景色
+``` javascript 
+ed5.customConfig.colors=[
+     '#000000',
+     '#ff0000',
+     '#00ff00',
+     '#0000ff',
+]
+```
+---
+
+## 配置字体
+``` javascript 
+ed6.customConfig.fontNames = [
+     '宋体',
+     '微软雅黑',
+     'Arial',
+     'Tahoma',
+     'Verdana'
+]
+```
+---
+
+## 配置表情
+``` javascript 
+ed7.customConfig.emotions=[{
+         title:'默认',
+         type:'image',
+         content:[{
+                 src : "http://img.t.sinajs.cn/t35/style/images/common/face/ext/normal/7a/shenshou_thumb.gif",
+                 alt : "[草泥马]"
+             },
+             {
+                src : "http://img.t.sinajs.cn/t35/style/images/common/face/ext/normal/60/horse2_thumb.gif",
+                 alt : "[神马]"
+             }
+         ]
+     },
+     {
+         title:'emoji',
+         type:'emoji',
+         content:['☸','✈','〠','♚','☎']
+     }
+ ]
+```
+---
+
+
+## 配置表情 从json文件中取
+``` javascript 
+var box=[];
+for(var i=0;i<data.length;i++){
+     var b={title:data[i].title,type:data[i].type,content: data[i].content}
+     box.push(b)
+}
+ed7.customConfig.emotions=box
+```
+---
+
+## 上传图片
+``` javascript 
+// 下面两个配置，使用其中一个即可显示“上传图片”的tab。但是两者不要同时使用！！！
+ed8.customConfig.uploadImgShowBase64=true; //使用 base64 保存图片
+ed8.customConfig.uploadImgServer='/upload'（url）;  //上传到服务器
+ed8.customConfig.uploadImgMaxSize = 3 * 1024 * 1024 // 将图片大小限制为 3M
+ed8.customConfig.uploadImgMaxLength = 5 //默认为 10000 张（即不限制），需要限制可自己配置
+ed8.customConfig.uploadFileName = 'yourFileName'  //自定义 fileName
+```
+---
+
+
+## 显示与隐藏网络图片上传
+``` javascript 
+ed9.customConfig.showLinkImg=false; //隐藏网络图片项
+ed9.customConfig.uploadImgServer='/upload';  //上传到服务器
 ```
 ---

@@ -11,7 +11,7 @@ description: "仿京东的三角热区域导航栏"
 toc: false
 ---
 
-![](https://wx3.sinaimg.cn/large/ed984376ly1g8wgjv3h66g20dc08jtbs.gif)
+![](http://pzcertt0r.bkt.clouddn.com/triangular-navigation-bar.gif)
 
 ---
 ``` css

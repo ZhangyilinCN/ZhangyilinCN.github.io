@@ -69,4 +69,4 @@ box1.addEventListener('click',function(){
 ```
 
 
-![](https://wx2.sinaimg.cn/large/ed984376ly1g8wgfl29onj20ff0ert9a.jpg)
+![](https://wx2.sinaimg.cn/mw690/ed984376ly1g8wgfl29onj20ff0ert9a.jpg)

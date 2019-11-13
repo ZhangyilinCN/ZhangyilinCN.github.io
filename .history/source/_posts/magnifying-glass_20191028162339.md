@@ -11,7 +11,7 @@ description: "模仿电商的宝贝滑过放大效果"
 toc: false
 ---
 
-![](https://wx2.sinaimg.cn/large/ed984376ly1g8wgikby9vj206c09a744.jpg)
+![](http://pzcertt0r.bkt.clouddn.com/magnifying-glass.png)
 
 ---
 

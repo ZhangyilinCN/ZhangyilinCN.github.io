@@ -13,7 +13,7 @@ description: "使用Jquery和Swiper两种方式实现3D轮播图"
 
 ## Swiper 版
 
-![](https://wx3.sinaimg.cn/large/ed984376ly1g8wgj9us5bg20dc06o4qp.gif)
+![](http://pzcertt0r.bkt.clouddn.com/rotate-3D-rotations01.gif)
 
 **记得要先引入 Swiper.css 和 Swiper.js(演示用的 Swiper4)**
 
@@ -82,7 +82,7 @@ var swiper = new Swiper(".swiper-container", {
 
 ## 兼容 IE8 的环形轮播(基于 Jquery)
 
-![](https://wx3.sinaimg.cn/large/ed984376ly1g8wgjd5zqng20dc072npb.gif)
+![](http://pzcertt0r.bkt.clouddn.com/rotate-3D-rotations02.gif)
 
 **记得要先引入 Jquery.js**
 

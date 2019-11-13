@@ -12,7 +12,7 @@ description: "使用canvas画升阶3D矩形"
 toc: false
 ---
 
-![](https://wx3.sinaimg.cn/large/ed984376ly1g8wgffb0b0j20hw06tdfn.jpg)
+![](http://pzcertt0r.bkt.clouddn.com/canvas-verticalcolumn.png)
 
 ---
 ``` css

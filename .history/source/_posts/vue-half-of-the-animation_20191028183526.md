@@ -11,7 +11,7 @@ description: "Vue钩子函数—半场动画（球入框）Demo"
 toc: false
 ---
 
-![](https://wx4.sinaimg.cn/large/ed984376ly1g8wgjypa18g20dc08maaz.gif)
+![](http://pzcertt0r.bkt.clouddn.com/vue-half-of-the-animation.gif)
 
 ---
 

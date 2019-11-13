@@ -59,6 +59,6 @@ toc: false
     *zoom: 1;
 }
 ```
-![](https://wx1.sinaimg.cn/large/ed984376ly1g8wgjgcl37j20jh0fst96.jpg)
+![](https://wx1.sinaimg.cn/mw690/ed984376ly1g8wgjgcl37j20jh0fst96.jpg)
 
 

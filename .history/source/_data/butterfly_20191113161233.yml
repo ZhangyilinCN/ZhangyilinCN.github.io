@@ -293,10 +293,10 @@ reward:
   enable: true
   QR_code:
     - itemlist:
-        img: https://wx2.sinaimg.cn/large/ed984376ly1g8wgkccal2j20eg0egt9h.jpg
+        img: http://pzcertt0r.bkt.clouddn.com/wechatpay.jpg
         text: 微信
     - itemlist:
-        img: https://wx4.sinaimg.cn/large/ed984376ly1g8wgf8d03hj20eg0egmxy.jpg
+        img: https://wx4.sinaimg.cn/mw690/ed984376ly1g8wgf8d03hj20eg0egmxy.jpg
         text: 支付宝
 
 # 推薦文章

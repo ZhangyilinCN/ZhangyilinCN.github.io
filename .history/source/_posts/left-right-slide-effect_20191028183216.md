@@ -11,7 +11,7 @@ description: "模仿电商左右滑出现删除按钮效果"
 toc: false
 ---
 
-![](https://wx3.sinaimg.cn/large/ed984376ly1g8wgihhu1ej208006f3ya.jpg)
+![](http://pzcertt0r.bkt.clouddn.com/left-right-slide-effect.png)
 
 ---
 

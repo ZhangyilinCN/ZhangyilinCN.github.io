@@ -127,11 +127,11 @@ cdn:
 # Post info settings
 # ---------------
 # avatar: /img/avatar.png
-avatar: https://wx3.sinaimg.cn/large/ed984376ly1g8wgfcn5rpj20nl0nlglk.jpg
+avatar: https://wx3.sinaimg.cn/mw690/ed984376ly1g8wgfcn5rpj20nl0nlglk.jpg
 
 # the banner image of index
 # if the banner of another page not setting,it will show the top_img
-top_img: https://wx2.sinaimg.cn/large/ed984376ly1g8wgjjnomaj21hc0u0wxl.jpg
+top_img: https://wx2.sinaimg.cn/mw690/ed984376ly1g8wgjjnomaj21hc0u0wxl.jpg
 
 #the banner image of post
 # if the post not set the post cover and post top image, it will show it
@@ -293,10 +293,10 @@ reward:
   enable: true
   QR_code:
     - itemlist:
-        img: https://wx2.sinaimg.cn/large/ed984376ly1g8wgkccal2j20eg0egt9h.jpg
+        img: http://pzcertt0r.bkt.clouddn.com/wechatpay.jpg
         text: 微信
     - itemlist:
-        img: https://wx4.sinaimg.cn/large/ed984376ly1g8wgf8d03hj20eg0egmxy.jpg
+        img: https://wx4.sinaimg.cn/mw690/ed984376ly1g8wgf8d03hj20eg0egmxy.jpg
         text: 支付宝
 
 # 推薦文章

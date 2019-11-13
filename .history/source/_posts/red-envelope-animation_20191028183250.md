@@ -11,7 +11,7 @@ keywords:
 description: "使用css/js两种方式完成红包晃动动画效果"
 ---
 
-![](https://wx2.sinaimg.cn/large/ed984376ly1g8wgj53nt1g20ci08pabl.gif)
+![](http://pzcertt0r.bkt.clouddn.com/red-envelope-animation.gif)
 
 ---
 

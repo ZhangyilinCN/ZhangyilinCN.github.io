@@ -565,6 +565,13 @@ CDN_USE:
     - https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js  #/js/third-party/jquery.min.js
     - /js/utils.js
     - /js/main.js
+    - /js/live2d-widget/autoload.js
+
+
+## 看板娘
+live2d:
+  enable: true
+
 
 
 # CDN

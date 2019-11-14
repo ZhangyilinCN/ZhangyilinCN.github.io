@@ -798,6 +798,4 @@ $(function () {
   $("#darkmode").click(function () {
     switchReadMode();
   });
-
-
 });

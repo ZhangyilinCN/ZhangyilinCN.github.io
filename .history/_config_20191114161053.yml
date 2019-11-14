@@ -84,9 +84,14 @@ deploy:
 
 
 # 搜索配置
-algolia: 
-  appId: '7WEY9UUKRG'
-  apiKey: 'c8df7c666c28fe0b3bad1e30b335b341'
-  adminApiKey: '83bf430c8039ffdb289a5f1f46275c75'
-  indexName: 'MyIndex'
-  chunkSize: 5000
+algolia: zyl-blog
+appId: '7WEY9UUKRG'
+apiKey: 'c8df7c666c28fe0b3bad1e30b335b341'
+adminApiKey: '83bf430c8039ffdb289a5f1f46275c75'
+indexName: 'MyIndex'
+chunkSize: 5000
+fields:
+  - title
+  - slug
+  - path
+  - content:strip

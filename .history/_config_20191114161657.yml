@@ -90,3 +90,8 @@ algolia:
   adminApiKey: '83bf430c8039ffdb289a5f1f46275c75'
   indexName: 'MyIndex'
   chunkSize: 5000
+  fields:
+  - title
+  - slug
+  - path
+  - content:strip

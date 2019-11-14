@@ -6,12 +6,12 @@
 function loadWidget(waifuPath, apiPath) {
 	localStorage.removeItem("waifu-display");
 	sessionStorage.removeItem("waifu-text");
-	// <span class="fa fa-lg fa-paper-plane"></span>
 	$("body").append(`<div id="waifu">
 			<div id="waifu-tips"></div>
 			<canvas id="live2d" width="300" height="300"></canvas>
 			<div id="waifu-tool">
 				<span class="fa fa-lg fa-comment"></span>
+				<span class="fa fa-lg fa-paper-plane"></span>
 				<span class="fa fa-lg fa-user-circle"></span>
 				<span class="fa fa-lg fa-street-view"></span>
 				<span class="fa fa-lg fa-camera-retro"></span>
@@ -19,7 +19,7 @@ function loadWidget(waifuPath, apiPath) {
 				<span class="fa fa-lg fa-times"></span>
 			</div>
 		</div>`);
-	$("#waifu").show().animate({ bottom: -10,left: 35 }, 3000);
+	$("#waifu").show().animate({ bottom: 0 }, 3000);
 
 	function registerEventListener() {
 		$("#waifu-tool .fa-comment").click(showHitokoto);

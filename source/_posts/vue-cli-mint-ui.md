@@ -1,0 +1,50 @@
+---
+title: mint-ui使用
+date: 2019-11-14 10:50:18
+tags:
+  - 'Vue-cli'
+  - '框架'
+categories:
+  - '框架'
+keywords:
+description: 'mint-ui使用'
+toc: false
+---
+
+
+## 下载
+
+``` js
+npm i mint-ui -s
+```
+
+## 使用
+
+### 全局导入使用--main.js中
+
+``` js
+import MintUI from 'mint-ui'
+import 'mint-ui/lib/style.css'
+Vue.use(MintUI)
+```
+
+**然后就可以直接使用css的封装组件了，如果要使用js的组件的话，需要按需加载需要的组件，官方文档都有**
+
+![](https://wx4.sinaimg.cn/large/ed984376ly1g8xdl9iq4xj20v20nnwez.jpg)
+
+### 按需加载导入使用
+
+```
+npm install babel-plugin-component -d
+```
+
+**下载之后再配置.babelrc文件**
+
+
+![](https://wx1.sinaimg.cn/large/ed984376ly1g8xdldgxdpj20lg07q747.jpg)
+
+**之后需要哪个就引那个就行**
+
+![](https://wx4.sinaimg.cn/large/ed984376ly1g8xdlgswb6j20nd04bjr9.jpg)
+
+---

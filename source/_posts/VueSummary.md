@@ -9,7 +9,7 @@ keywords:
 description: "Vue总结"
 ---
 
-## vue 的初始化1
+## vue 的初始化
 
 ```js
 let vm = new Vue({

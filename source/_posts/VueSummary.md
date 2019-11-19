@@ -1,0 +1,366 @@
+---
+title: Vue总结
+date: 2019-11-19 17:46:20
+tags:
+  - "Vue"
+categories:
+  - "Vue"
+keywords:
+description: "Vue总结"
+---
+
+## vue 的初始化1
+
+```js
+let vm = new Vue({
+    el: '#app', //指定操作的dom
+    data: { //定义属性
+        msg: 1231,
+        msg2: ''
+    },
+    methods: { //定义方法
+        show() {
+            alert('showFN')
+        }
+    },
+    directives: { //自定义私有指令
+        color: {
+            bind(el, binding) {
+                el.style.color = binding.value;
+            }
+            inserted(el) {
+                el.focus()
+            },
+            updated(el) {
+                    console.log(123);
+            }
+        }
+    },
+    filters: { //定义私有过滤器
+        fn(data) {
+            return '过滤器data：' + data
+
+        }
+    },
+    beforeCreate() { //生命周期函数 - 被创建之前
+
+    },
+    created() { //生命周期函数 - 被创建之后
+
+    },
+    beforeMount() { //生命周期函数 - 被挂载之前
+
+    },
+    mounted() { //生命周期函数 - 被挂载之后
+
+    },
+    beforeUpdate() { //生命周期函数 - 被修改之前
+
+    },
+    updated() { //生命周期函数 - 被修改之后
+
+    },
+    beforeDestroy() { //生命周期函数 - 被销毁之前
+
+    },
+    destroyed() { //生命周期函数 - 被销毁之后
+
+    },
+    components: {
+        mytmp: {
+            template: "<p>我是组件p</p>"
+        }
+    },
+    // router,
+    watch: { //被监听的数据
+        msg(newVal, oldVal) {
+            console.log('msg被修改前：' + oldVal);
+            console.log('msg被修改后：' + newVal);
+        }
+    },
+    computed: {
+        msg4() {
+            return "-----"
+        }
+    },
+    render(creatEle) { //重新渲染页面
+        return creatEle()
+    },
+})
+```
+
+---
+
+## 默认指令
+
+```js
+@click.once.prevent //只阻止一次默认事件
+@click.capture //进行捕获机制
+@click.stop //阻止冒泡事件
+@click.self //只有点击自己才出发，不经过捕获了冒泡来执行
+```
+
+---
+
+## 各种 v-指令
+
+``` js
+v-cloak  // [v-cloak] {display: none;} 可以在页面加载的时候隐藏插值表达式
+v-text="msg"  //把data中的msg渲染出来，不会识别其中的标签，但是会覆盖标签中的原有内容
+v-html  //把data中的msg渲染出来，可以识别其中的标签并渲染，但是会覆盖标签中的原有内容
+v-bind:title/:title=“msg”  //为其绑定一个属性,如果想要绑定单纯的str的话，要:title=" ' msg' "（双层引号）
+v-on:click/@click=“”  //为其绑定methods中的方法
+v-model // 双向绑定data中的值，多用于文本框，开关按钮
+v-for //v-for=“(item,idx) in arr、(val,key,idx) in obj、(item,idx) in 10” 用来循环数组，对象，数组对象等，要绑定:key值
+v-if	//v-if=true  会在页面上生成或者彻底消失一个dom
+v-show //v-show=false  会在页面是显示或者隐藏一个dom
+```
+
+---
+
+## 自定义指令（directive）
+
+### 创建自定义指令
+**私有的为 directives ： { xxx : {…}}**
+
+```js
+Vue.directive('指令名称',{事件方法})
+Vue.directive('focus', {
+    bind(el，binding) {   //其中bind函数大多数情况用来处理css样式
+      el.style.color = binding.value;  //bingding 表示一个对象，里面包含了name、value等值，为传的第二个参数中的内容
+    },
+    inserted(el) {  //其中inserted函数大多数情况用来处理js的行为
+      el.focus()  //el 表示被绑定的dom，是个原生js对象，可以使用js的行为方法
+    },
+    updated(el) {   //当VNode（组件）进行更新时候会执行，可能会触发多次
+      console.log(123);
+    }
+})
+```
+### 自定义指定的使用
+**使用的时候要加v-前缀**
+``` html
+<input type="text" placeholder="搜索" v-model=searchName v-focus v-color="'blue'">  
+```
+
+---
+
+## 过滤器（filter）
+
+### 创建 filter 过滤器
+**私有的为 filters: { xx( ) {…}**
+
+```js
+Vue.filter("fn", function(data, text) {
+  // data为原始的数值，text为第二参数
+  return data + "123" + text;
+});
+```
+``` html
+{{ item | fn("999") }} //item='哈哈' 返回结果为：哈哈123999
+```
+
+---
+
+## 动画效果（transition）
+### 使用transition包裹住内容，并使用css进行过度效果
+``` html
+<transition name="my">  //加了name的话，css要是控制为 .my-enter, .my-leave-to ...
+    <h3 v-if="flag" >哈哈哈</h3>
+</transition>
+```
+``` js
+.v-enter //进入前时的样子
+.v-leave-to //离开后的样子
+.v-enter-active //进入时的过度效果
+.v-leave-active //离开时的过度效果
+```
+
+### 使用第三方动画库进行动画效果
+``` html
+<transition enter-active-class="animated flipInX" leave-active-class="animated flipOutY"
+      :duration="{enter:2000,leave:500}">
+      <h1 v-if="flag">{{msg}}</h1>
+</transition>
+```
+``` js
+enter-active-class="第三方库的类名"
+leave-active-class="第三方库的类名" 
+:duration="{enter:200,leave:500}" 设置线性的过度时间
+```
+
+### 半场动画
+``` html
+<transition
+    @before-enter="beforeFn"  //给予绑定半场动画的3个函数
+    @enter="Fn"
+    @after-enter="afterFn"
+>
+	<span v-if="flag"></span>
+</transition>
+```
+``` js
+//然后在methods中的方法中定义：
+beforeFn(el){
+   el.style.opacity=0
+   el.style.transform='translate(0,0)'
+},
+Fn(el,done){
+   el.offsetWidth;  //不加的话没有动画过度效果
+   el.style.opacity=1
+   el.style.transform='translate(50px,450px)'
+   el.style.transition='all 1s ease'
+   done(); //加上后，表示执行完了立即执行下面的函数，增加流畅连贯性
+},
+afterFn(el){
+   this.flag=!this.flag;
+}
+```
+
+### 多个列表等的动画过度（transiton-group）
+``` html
+<transition-group appear tag="ul" mode="out-in">
+      <li v-for="(item,idx) in list" :key="item.id" @click="removeFn(idx)">{{item.id}}--{{item.name}}</li>
+</transition-group>
+```
+``` js
+// 其中appear表示已加载就执行一次  
+// tag="" 表示把此标签渲染成别的标签
+// mode="out-in" 表示先执行完离开在执行进入动画
+```
+---
+
+## 组件（component）
+### 创建定义组件
+**私有的为components: { name : { template : xx } }**
+``` js
+Vue.component('name', {template :'<h3>哈哈是否</h3>'})
+Vue.component('name', {template :'#aaa'})
+```
+``` html
+<template id="aaa"><h4>456464</h4></template>
+```
+
+### 组件中的data
+``` js
+components:{
+   temp: {
+    template:'#temp',
+      data() {  //组件的的data为一个对象 
+        return {  //需要return来返回
+        	a : 1,
+        	b : 2
+        } 
+     },
+   }
+}
+```
+
+### 子组件使用父组件的数据（props）
+
+``` html
+ <son-temp :sonmsg="msg"></son-temp> //在父组件的标签中使用：属性='xx' 来绑定数据到子组件
+ props:['sonmsg']  //再在子组件中使用 props：['属性名'],就可以在子组件中使用了
+```
+
+### 子组件使用父组件的方法（$emit）
+``` html
+<haha :ss="msg" @func="log"></haha> //在父组件的标签中使用@名字=‘方法名’ 来绑定方法到子组件
+在子组件中使用this.$emit ( 'func' ) 就可以使用父组件的方法
+如果给予父组件中的方法函数，子组件调用之后，可以返回给父组件想要的数据
+```
+``` js
+methods: {
+   log(test){
+     console.log('123' + test);
+     this.tt=test   //父组件接收后，进行操作
+   }
+}
+this.$emit('func',this.sun) //子组件执行父组件的方法，并把data中的sun返回给父组件，
+```
+### 使用ref来获取页面中的dom操作
+```html
+<h4 ref="myh4">啊哈哈哈</h4>  //定义ref，
+this.$refs.myh4.innerHTML  //可以操作定义的dom
+<son-temp ref="zj1"></son-temp>  //给予子组件上ref
+```
+``` js
+this.$refs.zj1.msg // 可以拿到子组件中的data中的msg的数据
+this.$refs.zj1.fn( )  //可以执行子组件中的方法
+```
+
+---
+
+## 路由（router）
+### 引入与使用
+``` js
+ routes:[  //配置完后，要在vue中使用，router：xxx
+      {path:'/',redirect:'/login'},  //path：'表示url地址' , redirect : '重定向到..'
+      {path:'/login',component:{template:'#login'}}, component: { 显示的组件 },
+      {path:'/reg',component:{template:'#reg'},children:[{path:'ll',component:ll}]} //路由的嵌套,是在本页面进行渲染的
+],
+```
+``` html
+<router-link to="/login" tag="span">登陆</router-link>  //to='要到的地址' tag='变成定义的标签'
+<router-view></router-view>  //路由的显示窗口
+```
+
+### 获取url中的数据（params和query）
+``` html
+<router-link to="/login?num=12">登陆</router-link>
+{path:'/reg',component:regcmp}  //这种的如果想要获取num的话，需要使用this.$route.query.num 来获取
+<router-link to="/login/10">登陆</router-link>
+{path:'/login/:num',component:login},  //这种的如果想要获取num的话，需要使用this.$route.params.num 来获取
+```
+
+### 多个路由的指向
+``` js
+routes:[{
+   path:'/',
+     components:{
+     default:{template:'#header'},
+     lefts:{template:'#left'},
+     rights:rights,
+   }
+}]
+```
+``` html
+<router-view></router-view>
+<router-view name="lefts"></router-view>
+<router-view name="rights"></router-view>
+```
+---
+
+## 监听数据（watch）
+``` js
+watch:{  // 监听data中的数据，如果发生改变会执行此方法
+    msg(newval,oldval){   //监听msg，newval为新的数据的值，oldval为旧的数据的值
+        console.log(‘change’)
+    },
+    $route.path(newval,oldval){  //监听路由的改变
+        if(newval=='/login'){
+          alert('登陆')
+        }else{
+          alert('注册')
+        }
+    }
+}
+```
+---
+
+## 计算属性（computed）
+
+``` js
+computed: {  //和watch类似，机制不同
+//是一个方法， 当属性（data）来用
+//使用后会被存入缓存
+//如果多次使用，并且没有改变其中的值，则会使用缓存中的值，而不去再次调用，提高性能
+    name3(){
+        console.log(123);
+        return this.name1+'--'+this.name2
+    },
+}
+```
+
+---
+

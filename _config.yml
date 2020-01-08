@@ -43,7 +43,7 @@ highlight:
   line_number: false
   auto_detect: false
   tab_replace:
-  
+
 # Home page setting
 # path: Root path for your blogs index page. (default = '')
 # per_page: Posts displayed per page. (0 = disable pagination)
@@ -52,7 +52,7 @@ index_generator:
   path: ''
   per_page: 10
   order_by: -date
-  
+
 # Category & Tag
 default_category: uncategorized
 category_map:
@@ -82,9 +82,8 @@ deploy:
   repository: https://github.com/ZhangyilinCN/ZhangyilinCN.github.io.git
   branch: master
 
-
 # 搜索配置  hexo algolia 更新数据库
-algolia: 
-  applicationID: '7WEY9UUKRG'
-  apiKey: 'c8df7c666c28fe0b3bad1e30b335b341'
-  indexName: 'MyIndex'
+algolia:
+  applicationID: '9M97EFR6L3'
+  apiKey: '9a2a64ad8edde3fd3c4ae2e8ee15e623'
+  indexName: 'hexo'

@@ -270,7 +270,7 @@ reward:
         text: 微信
     - itemlist:
         img: /img/alipay.jpg
-        text: 支付寶
+        text: 支付宝
 
 # 推薦文章
 related_post:

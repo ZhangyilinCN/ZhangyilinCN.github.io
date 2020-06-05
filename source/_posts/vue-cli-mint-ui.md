@@ -3,9 +3,9 @@ title: mint-ui使用
 date: 2019-11-14 10:50:18
 tags:
   - 'Vue-cli'
-  - '框架'
+  - '插件'
 categories:
-  - '框架'
+  - '插件'
 keywords:
 description: 'mint-ui使用'
 toc: false

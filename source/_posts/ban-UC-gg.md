@@ -13,9 +13,17 @@ description: '去除uc底部插入的广告'
 
 ```js
 //需要先引入jq
-<script>
-	setTimeout(function(){
-		$("[id^='_']").hide();
-	}, 500);
-</script>
+setTimeout(function () {
+  $("[id^='_']").hide()
+}, 500)
+```
+
+```js
+// 这个亲测有效(这不过有局限性)
+$(document).scroll(function () {
+  if ($('iframe').length > 0) {
+    $('iframe').parent('div').remove()
+    $('iframe').remove()
+  }
+})
 ```

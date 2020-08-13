@@ -10,6 +10,8 @@ description: 'vue-cli中使用swiper'
 toc: false
 ---
 
+## 由于现在 swiper 更新到了 6，所以这里降级处理，现在为 `"swiper": "^5.4.0",` 的使用配置
+
 ## 下载
 
 ```js
@@ -28,26 +30,18 @@ Vue.use(VueAwesomeSwiper)
 ### 在所需要的页面中
 
 ```js
-import 'swiper/dist/css/swiper.css'
-import { swiper, swiperSlide } from 'vue-awesome-swiper'
+import 'swiper/css/swiper.css'
+import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
 ```
 
 ---
 
 ```html
 <swiper :options="swiperBanner">
-  <div class="swiper-slide">
-    <img src="../assets/img/1.png" alt />
-  </div>
-  <div class="swiper-slide">
-    <img src="../assets/img/2.png" alt />
-  </div>
-  <div class="swiper-slide">
-    <img src="../assets/img/3.png" alt />
-  </div>
-  <div class="swiper-slide">
-    <img src="../assets/img/4.png" alt />
-  </div>
+  <div class="swiper-slide">slide-1</div>
+  <div class="swiper-slide">slide-2</div>
+  <div class="swiper-slide">slide-3</div>
+  <div class="swiper-slide">slide-4</div>
 </swiper>
 ```
 
@@ -74,8 +68,8 @@ data() {
     };
   },
   components: {
-    swiper,
-    swiperSlide
+    Swiper,
+    SwiperSlide
   },
 ```
 

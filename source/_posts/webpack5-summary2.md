@@ -7,7 +7,7 @@ tags:
 categories:
   - 'webpack'
 keywords:
-description: 'webpack5/loader配置'
+description: 'webpack5-各种资源的loader/plugins以及devServer的配置详解'
 ---
 
 ## webpack.config.js 用处
@@ -137,9 +137,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
   entry: './src/index.js',
   output: {
-    publicPath: './', //在这里指定路径
     filename: 'main.js',
     path: resolve(__dirname, 'build'),
+    publicPath: './', //在这里指定公共路径
   },
   module: {
     rules: [
@@ -178,4 +178,155 @@ module.exports = {
     }),
   ],
   mode: 'development',
+```
+
+---
+
+## 打包其他资源
+
+**其他资源(除了 html/js/css 资源以外的资源)-不需要做任何处理，直接原封不动的输出出去就可以了的**
+
+1. 首先使用`npm i file-loader -D`下载
+2. 然后在`webpack.config.js`中配置即可
+
+```js
+const { resolve } = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+
+module.exports = {
+  entry: './src/index.js',
+  output: {
+    filename: 'main.js',
+    path: resolve(__dirname, 'build'),
+  },
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
+      {
+        /*  test-为匹配,exclude-为排除
+            exclude: /\.(css|js|html|jpg|png|gif|less...)$/ */
+        test: /\.(eot|svg|ttf|woff|woff2)/,
+        loader: 'file-loader',
+        options: {
+          name: '[hash:10].[ext]', //使打包后的文件名短一些
+        },
+      },
+    ],
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './src/index.html',
+    }),
+  ],
+  mode: 'development',
+}
+```
+
+---
+
+## 本地服务器 devServer
+
+**开发服务器 devServe-用来自动化(自动编译,自动打开浏览器，自动刷新浏览器....)**
+**特点：只会在内存中编译打包,不会有任何输出,防止了每次修改后都要重新打包编译才能看到效果**
+**启动 devServe 指令为: `npx webpack-dev-server`/webpack5 以上为`npx webpack serve`**
+
+```js
+const { resolve } = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+
+module.exports = {
+  entry: './src/index.js',
+  output: {
+    filename: 'main.js',
+    path: resolve(__dirname, 'build'),
+  },
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
+    ],
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './src/index.html',
+    }),
+  ],
+  mode: 'development',
+  devServer: {
+    contentBase: resolve(__dirname, 'build'), //项目构建后的路径
+    compress: true, //启动gzip压缩
+    port: 3000, //端口号
+    open: true, //自动打开浏览器
+  },
+}
+```
+
+---
+
+## 分类打包输出
+
+**每次打包输出都会在 build 文件夹下生成许多文件,为了打包后的文件清晰,我们可以在配置中的`module-rules-options-outputPath`来指定打包后的文件夹**
+
+```js
+const { resolve } = require('path')
+const HtmlWebpackPlugins = require('html-webpack-plugin')
+
+module.exports = {
+  entry: './src/js/index.js',
+  output: {
+    filename: 'js/main.js',
+    path: resolve(__dirname, 'build'),
+    publicPath: './',
+  },
+  module: {
+    rules: [
+      {
+        test: /\.scss$/,
+        use: ['style-loader', 'css-loader', 'sass-loader'],
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.(png|jpg|gif)$/,
+        loader: 'url-loader',
+        options: {
+          limit: 8 * 1024,
+          name: '[hash:10].[ext]',
+          outputPath: 'imgs', //这里的outputPath设置,便是设置此类文件打包后所去往的去处
+        },
+      },
+      {
+        test: /\.html$/,
+        loader: 'html-loader',
+      },
+      {
+        test: /\.(eot|woff|woff2|ttf|svg)$/,
+        loader: 'file-loader',
+        options: {
+          name: '[hash:10].[ext]',
+          outputPath: 'fonts',
+        },
+      },
+    ],
+  },
+  plugins: [
+    new HtmlWebpackPlugins({
+      template: './src/index.html',
+    }),
+  ],
+  mode: 'development',
+  devServer: {
+    contentBase: resolve(__dirname, 'build'),
+    compress: true,
+    open: true,
+    port: 3000,
+  },
+}
 ```

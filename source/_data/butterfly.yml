@@ -104,7 +104,7 @@ google_analytics:
 avatar: https://i.loli.net/2019/11/15/JLX6vbUwyaQD4nr.jpg
 
 # the banner image of index
-top_img: https://i.loli.net/2019/11/15/KVJXPvxO7EYimeb.jpg
+top_img: https://i.loli.net/2020/10/23/FGxc2hIiYzC3aQ9.jpg
 # 以下鏈接是動態壁紙，每次刷新會更換
 # https://source.unsplash.com/collection/collectionid/1600x900
 # https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture
@@ -112,7 +112,7 @@ top_img: https://i.loli.net/2019/11/15/KVJXPvxO7EYimeb.jpg
 # https://api.dujin.org/bing/1366.php
 
 # if the banner of page not setting,it will show the top_img
-default_top_img: https://i.loli.net/2019/11/15/KVJXPvxO7EYimeb.jpg
+default_top_img: https://i.loli.net/2020/10/23/FGxc2hIiYzC3aQ9.jpg
 
 # the default cover of the post
 default_cover: https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png

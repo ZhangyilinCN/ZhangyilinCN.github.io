@@ -47,6 +47,6 @@ description: 'webpack5-初识'
 
 **要想使用 webpack 命令先使用`npm i webpack webpack-cli -g`进行全局安装,如果 package.json 中没有的话，还要使用`npm i webpack webpack-cli -D`安装项目依赖**
 
-## ![webpack003.png](https://i.loli.net/2020/10/22/pRhgE78qLQWZFBx.png)
+![webpack003.png](https://i.loli.net/2020/10/22/pRhgE78qLQWZFBx.png)
 
 ---

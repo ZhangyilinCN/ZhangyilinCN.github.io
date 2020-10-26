@@ -1,5 +1,5 @@
 ---
-title: webpack5小结-2
+title: webpack小结-2
 date: 2020-10-22 17:22:53
 tags:
   - 'node'
@@ -7,7 +7,7 @@ tags:
 categories:
   - 'webpack'
 keywords:
-description: 'webpack5-各种资源的loader/plugins以及devServer的配置详解'
+description: 'webpack-各种资源的loader/plugins以及devServer的配置详解'
 ---
 
 ## webpack.config.js 用处
@@ -229,6 +229,7 @@ module.exports = {
 
 ## 本地服务器 devServer
 
+**使用`npm i webpack-dev-server -D`下载,之后在进行配置**
 **开发服务器 devServe-用来自动化(自动编译,自动打开浏览器，自动刷新浏览器....)**
 **特点：只会在内存中编译打包,不会有任何输出,防止了每次修改后都要重新打包编译才能看到效果**
 **启动 devServe 指令为: `npx webpack-dev-server`/webpack5 以上为`npx webpack serve`**

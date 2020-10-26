@@ -1,5 +1,5 @@
 ---
-title: webpack5小结-1
+title: webpack小结-1
 date: 2020-10-22 15:29:39
 tags:
   - 'node'
@@ -7,7 +7,7 @@ tags:
 categories:
   - 'webpack'
 keywords:
-description: 'webpack5-初识'
+description: 'webpack-初识'
 ---
 
 ## webpack 初识

@@ -11,6 +11,7 @@ menu:
   时间轴: /archives/ || fa fa-archive
   便签: /tags/ || fa fa-tags
   分类: /categories/ || fa fa-folder-open
+  留言板: /messagediv/ || fa fa-comment-dots
   # List||fas fa-list:
   #   - Music || /music/ || fas fa-music
   #   - Movie || /movies/ || fas fa-video

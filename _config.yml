@@ -85,5 +85,5 @@ deploy:
 # 搜索配置  hexo algolia 更新数据库
 algolia:
   applicationID: '9M97EFR6L3'
-  apiKey: '9a2a64ad8edde3fd3c4ae2e8ee15e623'
+  apiKey: 'dc5c8150e3b206e5146a53ed1a3e7a7e'
   indexName: 'hexo'

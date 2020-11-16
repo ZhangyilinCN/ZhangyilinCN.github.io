@@ -87,10 +87,10 @@ avatar:
   effect: true
 
 # The banner image of home page
-index_img: https://i.loli.net/2020/10/23/FGxc2hIiYzC3aQ9.jpg
+index_img: https://i.loli.net/2020/11/16/NLoDFdYSpshVgRM.jpg
 
 # If the banner of page not setting, it will show the top_img
-default_top_img: https://i.loli.net/2020/10/23/FGxc2hIiYzC3aQ9.jpg
+default_top_img: https://i.loli.net/2020/11/16/NLoDFdYSpshVgRM.jpg
 # The banner image of archive page
 archive_img: 
 

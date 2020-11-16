@@ -7,7 +7,7 @@ tags:
 categories:
   - 'webpack'
 keywords:
-description: 'webpack5-开发环境详解-js文件的处理'
+description: 'webpack5-开发环境详解-js/html文件的处理'
 ---
 
 ## js 语法规范检查
@@ -164,3 +164,38 @@ description: 'webpack5-开发环境详解-js文件的处理'
      ],
    }
    ```
+
+---
+
+## js 和 html 文件的压缩处理
+
+**在`webpack5`中只需要把`mode-->production`,改为生产模式后,打包后会自动压缩`html`和`js`的代码**
+**在旧版 webpack 中,需要修改`HtmlWebpackPlugin`的配置项来压缩 html 代码**
+
+```js
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { resolve } = require('path')
+
+module.exports = {
+  entry: './src/index.js',
+  output: {
+    filename: 'main.js',
+    path: resolve(__dirname, 'build'),
+  },
+  mode: 'development', //在生产模式(production)下会自动压缩代码
+  module: {
+    rules: [],
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './src/index.html',
+      minify: {
+        collapseWhitespace: true, //移除空格
+        removeComments: true, //移除空格
+      },
+    }),
+  ],
+}
+```
+
+---

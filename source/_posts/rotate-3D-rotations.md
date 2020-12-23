@@ -5,6 +5,7 @@ tags:
   - "Jquery"
   - "插件"
   - "Demo"
+  - 'Swiper'
 categories:
   - "小练习"
 keywords:

@@ -3,6 +3,7 @@ title: vue-cli中使用swiper
 date: 2019-11-14 10:42:08
 tags:
   - 'Vue-cli'
+  - 'Swiper'
 categories:
   - 'Vue-cli'
 keywords:

@@ -1,5 +1,5 @@
 ---
-title: vue-cli中使用swiper的省略图
+title: vue-cli中使用swiper的缩略图
 date: 2020-12-23 16:02:50
 tags:
   - 'Vue-cli'

@@ -296,14 +296,14 @@ console.log(arr.flat(Infinity)) //[1, 2, 3, 4, 5, 6]
 
 ```js
 arr.reduce('回调函数(
-  "累加器",
+  "前一次回调函数的结果",
   "轮训的当前值",
   "轮询当前值的索引",
-  "被指向的arr")')
+  "被指向的arr")',初始化值)
 let arr = [1, 2, 3, 4, 5]
 let sum = arr.reduce((sum, item, idx, arr) => {
   return (sum += item)
-})
+},0)
 console.log(sum) // 15
 ```
 

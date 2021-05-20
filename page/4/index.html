@@ -1,0 +1,250 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Zyl-Blog - 走夜路的个人博客</title><meta name="author" content="走夜路"><meta name="copyright" content="走夜路"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta property="og:type" content="website">
+<meta property="og:title" content="Zyl-Blog">
+<meta property="og:url" content="https://www.zyl-blog.top/page/4/index.html">
+<meta property="og:site_name" content="Zyl-Blog">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2019/11/15/JLX6vbUwyaQD4nr.jpg">
+<meta property="article:author" content="走夜路">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2019/11/15/JLX6vbUwyaQD4nr.jpg"><link rel="shortcut icon" href="/img/zyl_favicon.png"><link rel="canonical" href="https://www.zyl-blog.top/page/4/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.5/dist/instantsearch.min.css"><script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.5/dist/instantsearch.min.js" defer></script><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: {"appId":"9M97EFR6L3","apiKey":"1b60e9fa370fc9b9794414188042be6d","indexName":"hexo","hits":{"per_page":6},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 走夜路","link":"链接: ","source":"来源: Zyl-Blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  ClickShowText: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+  },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2021-05-20 09:01:53'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(function () {  window.activateDarkMode = function () {
+    document.documentElement.setAttribute('data-theme', 'dark')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+    }
+  }
+  window.activateLightMode = function () {
+    document.documentElement.setAttribute('data-theme', 'light')
+   if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+    }
+  }
+  const autoChangeMode = 'false'
+  const t = saveToLocal.get('theme')
+  if (autoChangeMode === '1') {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+    const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+    const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+    if (t === undefined) {
+      if (isLightMode) activateLightMode()
+      else if (isDarkMode) activateDarkMode()
+      else if (isNotSpecified || hasNoSupport) {
+        const now = new Date()
+        const hour = now.getHours()
+        const isNight = hour <= 6 || hour >= 18
+        isNight ? activateDarkMode() : activateLightMode()
+      }
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+        if (saveToLocal.get('theme') === undefined) {
+          e.matches ? activateDarkMode() : activateLightMode()
+        }
+      })
+    } else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else if (autoChangeMode === '2') {
+    const now = new Date()
+    const hour = now.getHours()
+    const isNight = hour <= 6 || hour >= 18
+    if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+    else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else {
+    if (t === 'dark') activateDarkMode()
+    else if (t === 'light') activateLightMode()
+  }const asideStatus = saveToLocal.get('aside-status')
+if (asideStatus !== undefined) {
+   if (asideStatus === 'hide') {
+     document.documentElement.classList.add('hide-aside')
+   } else {
+     document.documentElement.classList.remove('hide-aside')
+   }
+}})()</script><meta name="generator" content="Hexo 5.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" data-lazy-src="https://i.loli.net/2019/11/15/JLX6vbUwyaQD4nr.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">93</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">30</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">12</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 便签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/messagediv/"><i class="fa-fw fa fa-comment-dots"></i><span> 留言板</span></a></div></div></div></div><div id="body-wrap"><header class="full_page" id="page-header" style="background-image: url(https://i.loli.net/2020/11/16/NLoDFdYSpshVgRM.jpg)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Zyl-Blog</a></span><span id="menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 便签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/messagediv/"><i class="fa-fw fa fa-comment-dots"></i><span> 留言板</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="site-info"><h1 id="site-title">Zyl-Blog</h1><div id="site-subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/ZhangyilinCN" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:18632132186@163.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2019/11/14/vue-cli-preview/" title="图片缩略图插件(vue-preview)">     <img class="post_bg" data-lazy-src="https://i.loli.net/2020/11/16/31BXRSPoTciFWqx.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="图片缩略图插件(vue-preview)"></a></div><div class="recent-post-info"><a class="article-title" href="/2019/11/14/vue-cli-preview/" title="图片缩略图插件(vue-preview)">图片缩略图插件(vue-preview)</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-11-14T02:40:01.000Z" title="发表于 2019-11-14 10:40:01">2019-11-14</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E6%8F%92%E4%BB%B6/">插件</a></span></div><div class="content">npm i vue-preview -s
+
+import VuePreview from &#x27;vue-preview&#x27;Vue.use(VuePreview)
+
+&lt;div class=&quot;imgContent&quot;&gt;     &lt;vue-preview :slides=&quot;imgArr&quot; @close=&quot;handleClose&quot;&gt;&lt;/vue-preview&gt;&lt;/div&gt;&lt;!--其中的imgArr是你的数组对象，其中要包括属性：w/h/msrc/srchandleClose 为关闭函数 --&gt;
+</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2019/11/14/vue-cli-webpack/" title="webpack导入vue">     <img class="post_bg" data-lazy-src="https://i.loli.net/2020/11/16/31BXRSPoTciFWqx.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="webpack导入vue"></a></div><div class="recent-post-info"><a class="article-title" href="/2019/11/14/vue-cli-webpack/" title="webpack导入vue">webpack导入vue</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-11-14T02:30:26.000Z" title="发表于 2019-11-14 10:30:26">2019-11-14</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/Vue-cli/">Vue-cli</a></span></div><div class="content">在项目中安装 vue 并使用
+npm i vue -s
+
+然后在 main.js
+import Vue from &#x27;vue&#x27;var vm = new Vue(&#123;  el: &#x27;#app&#x27;,  data: &#123;    msg: 123  &#125;&#125;)
+
+打包后发现会报错，因为 vue 在 webpack 中使用的是 vue.common.js 然不是完整的 vue.js，所以如果想要使用实例化这种的 vue 方法需要以下配置第一种-修改路径import Vue from &#x27;vue/dist/vue.js&#x27;
+
+第二种-配置 webpack.config.jsimport Vue from &#x27;vue&#x27; //这边不动
+
+
+resolve: &#123; alias: &#123;   &quot;vue$&quot;:&quot;vue/dist/vue.js&quot; &#125;&#125;
+
+
+</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2019/11/14/wechat-share/" title="微信分享">     <img class="post_bg" data-lazy-src="https://i.loli.net/2020/11/16/31BXRSPoTciFWqx.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="微信分享"></a></div><div class="recent-post-info"><a class="article-title" href="/2019/11/14/wechat-share/" title="微信分享">微信分享</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-11-14T02:27:31.000Z" title="发表于 2019-11-14 10:27:31">2019-11-14</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/WeChat/">WeChat</a></span></div><div class="content">export const defaultWxshare = (shareImg,shareDesc,shareTitle) =&gt; &#123;  let LocUrl = encodeURIComponent(location.href.split(&quot;#&quot;)[0]);  LocUrl = LocUrl.replace(/\&amp;/g, &quot;%26&quot;);  axios    .get(`http://api.pinpaizw.com/interface/pinpai3/mobile/wx_get_signature.php?url=$&#123;LocUrl&#125;`)    .then(response =&gt; &#123;      let link = response.data.res.url;      let shareUrl = link      // 微信分享基本配置      let wxConfig = &#123;        debug: false, //生产环境需要关闭debug模式        a ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2019/11/14/scss-mixin/" title="scss-mixin的基本（手机1px边框适配）">     <img class="post_bg" data-lazy-src="https://i.loli.net/2020/11/16/31BXRSPoTciFWqx.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="scss-mixin的基本（手机1px边框适配）"></a></div><div class="recent-post-info"><a class="article-title" href="/2019/11/14/scss-mixin/" title="scss-mixin的基本（手机1px边框适配）">scss-mixin的基本（手机1px边框适配）</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-11-14T02:20:11.000Z" title="发表于 2019-11-14 10:20:11">2019-11-14</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/scss-sass/">scss/sass</a></span></div><div class="content">$border-poses:top,right,bottom,left;$color:#333; @mixin border-1px($color, $pos) &#123;  position: relative;   &amp;::after &#123;   content: &#x27;&#x27;;    display: block;    position: absolute;    width: 100%;    @each $item in $pos &#123;      border-#&#123;$item&#125;: 1px solid $color;      #&#123;$item&#125;: 0;    &#125;  &#125;&#125;@media (-webkit-min-device-pixel-ratio:1.5),(min-device-pixel-ratio: 1.5) &#123;  .border-1px &amp;::after &#123;    -webkit-transform: scaleY(0.7);    tra ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2019/11/14/vue-sass/" title="scss/sass在vue的使用">     <img class="post_bg" data-lazy-src="https://i.loli.net/2020/11/16/31BXRSPoTciFWqx.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="scss/sass在vue的使用"></a></div><div class="recent-post-info"><a class="article-title" href="/2019/11/14/vue-sass/" title="scss/sass在vue的使用">scss/sass在vue的使用</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-11-14T02:11:34.000Z" title="发表于 2019-11-14 10:11:34">2019-11-14</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/scss-sass/">scss/sass</a></span></div><div class="content">在 vue 的 css 样式中，使用@import 和@include 可以导入和使用外部的 scss/sass
+
+就是在.talk 这个类中使用外层 scss 中定义好的 mixin 方法；
+
+scss 的全局使用如果想要全局定义使用某个 scss 文件时，除了 scss 的 2 个依赖（sass-loader 和 node-sass）外，还需要现在（sass-resources-loader）这个依赖
+npm sass-resources-loader -d
+
+修改配置下载完成后，在 build 中的 utils.js 中进行配置 （注意修改你引入的路径）
+
+使用之后就可以在你的 vue-cli 中的任何组件中，使用@include 来使用这里面的内容了
+scss: generateLoaders(&#x27;sass&#x27;).concat(&#123;  loader: &#x27;sass-resources-loader&#x27;,  options:&#123;  resources: path.resolve(__dirname,&#x27;../src/comm ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2019/11/14/webpack-dev-server-hot/" title="webpack修改代码后自动打包(webpack-dev-server)">     <img class="post_bg" data-lazy-src="https://i.loli.net/2020/11/16/31BXRSPoTciFWqx.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="webpack修改代码后自动打包(webpack-dev-server)"></a></div><div class="recent-post-info"><a class="article-title" href="/2019/11/14/webpack-dev-server-hot/" title="webpack修改代码后自动打包(webpack-dev-server)">webpack修改代码后自动打包(webpack-dev-server)</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-11-14T02:00:59.000Z" title="发表于 2019-11-14 10:00:59">2019-11-14</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/Webpack/">Webpack</a></span></div><div class="content">需要安装 webpack-dev-server
+npm i webpack-dev-server -d //安装到本地依赖(只需要装到本地项目中，不需要-g)
+
+因为webpack-dev-server是依赖于本地的webpack和webpack-cli的，所以，如果本地中没有安装。则需要先安装，才能使用
+npm i webpack -dnpm i webpack-cli -d
+
+如果不知道自己是否安装过可以查看package.json文件
+
+配置好之后，再修改代码，保存之后，会自动执行打包，不用再手动输入命令行来实现了
+
+
+</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2019/11/14/html-webpack-plugin/" title="html-webpack-plugin插件的使用和配置">     <img class="post_bg" data-lazy-src="https://i.loli.net/2020/11/16/31BXRSPoTciFWqx.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="html-webpack-plugin插件的使用和配置"></a></div><div class="recent-post-info"><a class="article-title" href="/2019/11/14/html-webpack-plugin/" title="html-webpack-plugin插件的使用和配置">html-webpack-plugin插件的使用和配置</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-11-14T01:46:31.000Z" title="发表于 2019-11-14 09:46:31">2019-11-14</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/Webpack/">Webpack</a></span></div><div class="content">特点自动在内存中根据所配置的指定页面生成一个内存的页面；自动把打包好的 js 文件追加到页面当中。
+下载npm i html-webpack-plugin -d  //在项目中来进行安装
+
+配置然后在 webpack.config.js 中进行配置
+
+new htmlWebpackPlugin(&#123;  template: path.join(__dirname, &#x27;./src/index.html&#x27;),  filename: &#x27;index.html&#x27;&#125;)
+
+使用然后在 index 中注释了 js 的引用，并且运行页面，我们会发现，在页面末尾自动给我们追加上了 script 的引用
+
+
+</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2019/11/13/webpack-depend-on/" title="webpack常用的打包依赖配置">     <img class="post_bg" data-lazy-src="https://i.loli.net/2020/11/16/31BXRSPoTciFWqx.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="webpack常用的打包依赖配置"></a></div><div class="recent-post-info"><a class="article-title" href="/2019/11/13/webpack-depend-on/" title="webpack常用的打包依赖配置">webpack常用的打包依赖配置</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-11-13T09:12:00.000Z" title="发表于 2019-11-13 17:12:00">2019-11-13</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/Webpack/">Webpack</a></span></div><div class="content">因为webpack默认只能打包处理js类型的文件如果需要处理非js类的文件，我们需要手动安装一些合适的第三方 loader 加载器
+css的依赖下载下载所需要的依赖
+npm i style-loader -d //先安装两个依赖npm i css-loader -d
+修改配置修改webpack.config.js的配置文件
+
+&#123;test: /\.css$/, use: [&#x27;style-loader&#x27;,&#x27;css-loader&#x27;]&#125;,
+
+使用之后就能识别css类型的文件了
+import $ from &#x27;jquery&#x27;;  //只能识别js的import &#x27;./css/index.css&#x27; //安装并且配置好loader之后就可以识别使用了
+
+
+less/scss的依赖下载less配置
+npm i less -dnpm i less-loader -d
+
+sass/scs配置
+npm i node-sass -dnpm i sass-loader -d
+
+修改配置然后修改webpack.con ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2019/11/13/webpack-babel/" title="webpack的js转化工具babel配置">     <img class="post_bg" data-lazy-src="https://i.loli.net/2020/11/16/31BXRSPoTciFWqx.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="webpack的js转化工具babel配置"></a></div><div class="recent-post-info"><a class="article-title" href="/2019/11/13/webpack-babel/" title="webpack的js转化工具babel配置">webpack的js转化工具babel配置</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-11-13T09:06:54.000Z" title="发表于 2019-11-13 17:06:54">2019-11-13</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/Webpack/">Webpack</a></span></div><div class="content">在js中写一些高级的es6的语法，进行打包处理会报错，因为会不识别，所以需要安装转化工具-babel//安装babel的转化工具,这里的babel-loader要安装版本7，高版本8，则需要更改其他的安装项npm i babel-core babel-loader@7 babel-plugin-transform-runtime -d//安装语法字典npm i babel-preset-env babel-preset-stage-0 -d
+
+然后在webpack.config.js中进行配置
+&#123;test: /\.js$/, use: &#x27;babel-loader&#x27;, exclude: /node_modules/&#125;
+
+最后在项目的根目录下新建一个 .babel 的文件来进行babel的配置
+&#123;  &quot;presets&quot;:[&quot;env&quot;,&quot;stage-0&quot;],  &quot;plugins&quot;:[&quot;transform-runtime&quot;]&#125;
+</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2019/11/13/webpack-initial/" title="webpack初识">     <img class="post_bg" data-lazy-src="https://i.loli.net/2020/11/16/31BXRSPoTciFWqx.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="webpack初识"></a></div><div class="recent-post-info"><a class="article-title" href="/2019/11/13/webpack-initial/" title="webpack初识">webpack初识</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-11-13T08:51:27.000Z" title="发表于 2019-11-13 16:51:27">2019-11-13</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/Webpack/">Webpack</a></span></div><div class="content">使用npm i webpack -g //进行全局安装（本地的话使用后缀 -d）
+
+安装之后再项目中使用npm init -y  //生成package.json文件
+
+如果要在项目中装插件什么的 可以使用npm i jquery -s //（-s是项目中要使用的，-d是项目实际运行时不需要的，如gulp）
+
+npm 装包时-S 和-D 的区别npm install name -save 简写（npm install name -S） 自动把模块和版本号添加到 dependencies。-S 后，安装包会在 package 中的 dependencies 对象中。简称 dep。dep 是在生产环境中要用到的。
+项目插件：例如 element ui、echarts 这种插件要在运行中使用的，就要放在 dep 中所以就用 -S
+一般我们项目插件，在 api 中都可以看到，一般都是-S。因为这些插件是在程序运行中使用的。
+
+npm install name -save-dve 简写（npm install name -D） 自动把模块和版本号添加到 devdependencies。-D 后， ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/3/"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/5/"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside_content" id="aside_content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><img class="avatar-img" data-lazy-src="https://i.loli.net/2019/11/15/JLX6vbUwyaQD4nr.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">走夜路</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">93</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">30</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">12</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/ZhangyilinCN" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:18632132186@163.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div></div><div class="card-widget card-announcement"><div class="card-content"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">欢迎来访~ o(*￣▽￣*)ブ</div></div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="card-content"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/05/20/demo111/" title="demo111"><img data-lazy-src="https://i.loli.net/2020/11/16/31BXRSPoTciFWqx.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="demo111"/></a><div class="content"><a class="title" href="/2021/05/20/demo111/" title="demo111">demo111</a><time datetime="2021-05-20T00:58:44.000Z" title="发表于 2021-05-20 08:58:44">2021-05-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/12/23/vue-wowjs-ani/" title="在vue中使用wowjs"><img data-lazy-src="https://i.loli.net/2020/11/16/31BXRSPoTciFWqx.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="在vue中使用wowjs"/></a><div class="content"><a class="title" href="/2020/12/23/vue-wowjs-ani/" title="在vue中使用wowjs">在vue中使用wowjs</a><time datetime="2020-12-23T08:28:16.000Z" title="发表于 2020-12-23 16:28:16">2020-12-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/12/23/vue-swiper-thumbs/" title="vue-cli中使用swiper的缩略图"><img data-lazy-src="https://i.loli.net/2020/11/16/31BXRSPoTciFWqx.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="vue-cli中使用swiper的缩略图"/></a><div class="content"><a class="title" href="/2020/12/23/vue-swiper-thumbs/" title="vue-cli中使用swiper的缩略图">vue-cli中使用swiper的缩略图</a><time datetime="2020-12-23T08:02:51.000Z" title="发表于 2020-12-23 16:02:51">2020-12-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/12/01/copyComprehend/" title="浅拷贝与深拷贝"><img data-lazy-src="https://i.loli.net/2020/11/16/31BXRSPoTciFWqx.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="浅拷贝与深拷贝"/></a><div class="content"><a class="title" href="/2020/12/01/copyComprehend/" title="浅拷贝与深拷贝">浅拷贝与深拷贝</a><time datetime="2020-12-01T03:54:43.000Z" title="发表于 2020-12-01 11:54:43">2020-12-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/10/26/webpack5-summary4/" title="webpack5小结-4"><img data-lazy-src="https://i.loli.net/2020/11/16/31BXRSPoTciFWqx.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="webpack5小结-4"/></a><div class="content"><a class="title" href="/2020/10/26/webpack5-summary4/" title="webpack5小结-4">webpack5小结-4</a><time datetime="2020-10-26T08:56:41.000Z" title="发表于 2020-10-26 16:56:41">2020-10-26</time></div></div></div></div></div><div class="card-widget card-categories"><div class="card-content"><div class="item-headline"><i class="fas fa-folder-open"></i><span>分类</span></div><ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/H5-C3/"><span class="card-category-list-name">H5+C3</span><span class="card-category-list-count">5</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Javascript/"><span class="card-category-list-name">Javascript</span><span class="card-category-list-count">10</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Jquery/"><span class="card-category-list-name">Jquery</span><span class="card-category-list-count">3</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Vue/"><span class="card-category-list-name">Vue</span><span class="card-category-list-count">12</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Vue-cli/"><span class="card-category-list-name">Vue-cli</span><span class="card-category-list-count">7</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/WeChat/"><span class="card-category-list-name">WeChat</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Webpack/"><span class="card-category-list-name">Webpack</span><span class="card-category-list-count">7</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/scss-sass/"><span class="card-category-list-name">scss/sass</span><span class="card-category-list-count">3</span></a></li>
+            <li class="card-category-list-item more is-center"><a class="card-category-list-link-more" href="/categories/">
+                <span>查看更多</span><i class="fas fa-angle-right"></i></a></li>
+            </ul></div></div><div class="card-widget card-tags"><div class="card-content"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/Canvas/" style="font-size: 1.22em; color: #999ea4">Canvas</a> <a href="/tags/Css/" style="font-size: 1.3em; color: #99a1ac">Css</a> <a href="/tags/Demo/" style="font-size: 1.46em; color: #99a7bb">Demo</a> <a href="/tags/Dom/" style="font-size: 1.34em; color: #99a3b0">Dom</a> <a href="/tags/Html/" style="font-size: 1.18em; color: #999ca1">Html</a> <a href="/tags/Javascript/" style="font-size: 1.5em; color: #99a9bf">Javascript</a> <a href="/tags/Jquery/" style="font-size: 1.26em; color: #999fa8">Jquery</a> <a href="/tags/Swiper/" style="font-size: 1.18em; color: #999ca1">Swiper</a> <a href="/tags/UI/" style="font-size: 1.1em; color: #999">UI</a> <a href="/tags/Vue/" style="font-size: 1.42em; color: #99a6b7">Vue</a> <a href="/tags/Vue-webpack/" style="font-size: 1.18em; color: #999ca1">Vue+webpack</a> <a href="/tags/Vue-cli/" style="font-size: 1.38em; color: #99a4b4">Vue-cli</a> <a href="/tags/WeChat/" style="font-size: 1.1em; color: #999">WeChat</a> <a href="/tags/Webpack/" style="font-size: 1.3em; color: #99a1ac">Webpack</a> <a href="/tags/mixin/" style="font-size: 1.1em; color: #999">mixin</a> <a href="/tags/node/" style="font-size: 1.22em; color: #999ea4">node</a> <a href="/tags/scss-sass/" style="font-size: 1.18em; color: #999ca1">scss/sass</a> <a href="/tags/uni-app/" style="font-size: 1.1em; color: #999">uni-app</a> <a href="/tags/upload/" style="font-size: 1.14em; color: #999b9d">upload</a> <a href="/tags/webpack/" style="font-size: 1.22em; color: #999ea4">webpack</a> <a href="/tags/%E5%8A%A8%E7%94%BB/" style="font-size: 1.14em; color: #999b9d">动画</a> <a href="/tags/%E5%A4%8D%E5%88%B6/" style="font-size: 1.1em; color: #999">复制</a> <a href="/tags/%E5%AF%8C%E6%96%87%E6%9C%AC/" style="font-size: 1.1em; color: #999">富文本</a> <a href="/tags/%E6%87%92%E5%8A%A0%E8%BD%BD/" style="font-size: 1.1em; color: #999">懒加载</a> <a href="/tags/%E6%8B%96%E5%8A%A8/" style="font-size: 1.1em; color: #999">拖动</a> <a href="/tags/%E6%8F%92%E4%BB%B6/" style="font-size: 1.42em; color: #99a6b7">插件</a> <a href="/tags/%E6%97%A5%E6%9C%9F/" style="font-size: 1.18em; color: #999ca1">日期</a> <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 1.1em; color: #999">正则表达式</a> <a href="/tags/%E6%BB%9A%E5%8A%A8%E6%9D%A1/" style="font-size: 1.1em; color: #999">滚动条</a> <a href="/tags/%E7%80%91%E5%B8%83%E6%B5%81/" style="font-size: 1.1em; color: #999">瀑布流</a></div></div></div><div class="card-widget card-archives"><div class="card-content"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/05/"><span class="card-archive-list-date">五月 2021</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/12/"><span class="card-archive-list-date">十二月 2020</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/10/"><span class="card-archive-list-date">十月 2020</span><span class="card-archive-list-count">4</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/07/"><span class="card-archive-list-date">七月 2020</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/06/"><span class="card-archive-list-date">六月 2020</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/05/"><span class="card-archive-list-date">五月 2020</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/04/"><span class="card-archive-list-date">四月 2020</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/01/"><span class="card-archive-list-date">一月 2020</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item more is-center"><a class="card-archive-list-link-more" href="/archives/">
+              <span>查看更多</span><i class="fas fa-angle-right"  ></i></a></li></ul></div></div><div class="card-widget card-webinfo"><div class="card-content"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">93</div></div><div class="webinfo-item"><div class="item-name">已运行时间 :</div><div class="item-count" id="runtimeshow" data-publishDate="2019-10-08T03:22:47.000Z"></div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2021-05-20T01:01:53.308Z"></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2021 By 走夜路</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">你居然会看到底，厉害了呢！</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="algolia-search"><div class="search-dialog"><div class="search-dialog__title" id="algolia-search-title">Algolia</div><div id="algolia-input-panel"><div id="algolia-search-input"></div></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-stats"></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="/js/search/algolia.js"></script><div class="js-pjax"><script>function subtitleType () {
+  if (true) { 
+    var typed = new Typed("#subtitle", {
+      strings: "写不完的需求&#44;改不完的BUG,Endless requirements Endless bugs".split(","),
+      startDelay: 300,
+      typeSpeed: 150,
+      loop: true,
+      backSpeed: 50
+    })
+  } else {
+    document.getElementById("subtitle").innerHTML = '写不完的需求&#44;改不完的BUG'
+  }
+}
+
+if (true) {
+  if (typeof Typed === 'function') subtitleType()
+  else $.getScript('https://cdn.jsdelivr.net/npm/typed.js/lib/typed.min.js', subtitleType)
+} else {
+  subtitleType()
+}</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="/js/live2d-widget/autoload.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script></div></body></html>

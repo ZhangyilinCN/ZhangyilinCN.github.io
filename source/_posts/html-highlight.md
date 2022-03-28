@@ -51,8 +51,12 @@ htmlHighlightFn(content, keyword){
                 if(index === 0 && !item) {
                     num=1
                 }
-                if(item && index !== 0) {
-                    htmlContent += imgArr[index - num] + item
+                if(item) {
+                    if(ImgArr) {
+                        htmlContent += imgArr[index - num] + item
+                    }else {
+                        htmlContent += item
+                    }
                 }
             })
             return htmlContent

@@ -58,7 +58,6 @@ onNewsPaste(event) {
                 //  判断是不是截图还是本地文件，截图的话这个为null，本地的话是个对象
                 isJieTu = filterItem[i].webkitGetAsEntry();
                 if (!isJieTu) {
-                    //如果是截屏的直接粘贴就跳过
                     event.preventDefault();
                     const reader = new FileReader();
                     let that = this;

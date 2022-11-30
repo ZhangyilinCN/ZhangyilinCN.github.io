@@ -64,10 +64,17 @@ onNewsPaste(event) {
                     let that = this;
                     reader.onload = (function () {
                         return function (e) {
-                            that.blobUrlToFlieArr = [
-                                ...that.blobUrlToFlieArr,
-                                { name: e.target.result, file },
-                            ];
+                            let fileFlag = that.blobUrlToFlieArr.some(
+                                (ele) => {
+                                    return ele.name == e.target.result;
+                                }
+                            ); //防止重复多次粘贴一个图片
+                            if (!fileFlag) {
+                                that.blobUrlToFlieArr = [
+                                    ...that.blobUrlToFlieArr,
+                                    { name: e.target.result, file },
+                                ];
+                            }
                             let imageDomStr = `<img  data-info='diaImWeb' src=${e.target.result} class='pasteImgs' />`;
                             let fragment = selection
                                 .getRangeAt(0)

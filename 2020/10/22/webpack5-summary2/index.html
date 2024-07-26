@@ -1,0 +1,245 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>webpack小结-2 | Zyl-Blog</title><meta name="keywords" content="node,webpack"><meta name="author" content="走夜路"><meta name="copyright" content="走夜路"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="webpack-各种资源的loader&#x2F;plugins以及devServer的配置详解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="webpack小结-2">
+<meta property="og:url" content="https://www.zyl-blog.top/2020/10/22/webpack5-summary2/index.html">
+<meta property="og:site_name" content="Zyl-Blog">
+<meta property="og:description" content="webpack-各种资源的loader&#x2F;plugins以及devServer的配置详解">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2020/11/16/31BXRSPoTciFWqx.jpg">
+<meta property="article:published_time" content="2020-10-22T09:22:53.000Z">
+<meta property="article:modified_time" content="2023-07-12T02:25:29.648Z">
+<meta property="article:author" content="走夜路">
+<meta property="article:tag" content="node">
+<meta property="article:tag" content="webpack">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/11/16/31BXRSPoTciFWqx.jpg"><link rel="shortcut icon" href="/img/zyl_favicon.png"><link rel="canonical" href="https://www.zyl-blog.top/2020/10/22/webpack5-summary2/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.5/dist/instantsearch.min.css"><script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.5/dist/instantsearch.min.js" defer></script><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: {"appId":"I1OGO2CKWD","apiKey":"57b39585f17d0b9a93a4894676734482","indexName":"hexo-bolg","hits":{"per_page":6},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 走夜路","link":"链接: ","source":"来源: Zyl-Blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  ClickShowText: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+  },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-07-12 10:25:29'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(function () {  window.activateDarkMode = function () {
+    document.documentElement.setAttribute('data-theme', 'dark')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+    }
+  }
+  window.activateLightMode = function () {
+    document.documentElement.setAttribute('data-theme', 'light')
+   if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+    }
+  }
+  const autoChangeMode = 'false'
+  const t = saveToLocal.get('theme')
+  if (autoChangeMode === '1') {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+    const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+    const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+    if (t === undefined) {
+      if (isLightMode) activateLightMode()
+      else if (isDarkMode) activateDarkMode()
+      else if (isNotSpecified || hasNoSupport) {
+        const now = new Date()
+        const hour = now.getHours()
+        const isNight = hour <= 6 || hour >= 18
+        isNight ? activateDarkMode() : activateLightMode()
+      }
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+        if (saveToLocal.get('theme') === undefined) {
+          e.matches ? activateDarkMode() : activateLightMode()
+        }
+      })
+    } else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else if (autoChangeMode === '2') {
+    const now = new Date()
+    const hour = now.getHours()
+    const isNight = hour <= 6 || hour >= 18
+    if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+    else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else {
+    if (t === 'dark') activateDarkMode()
+    else if (t === 'light') activateLightMode()
+  }const asideStatus = saveToLocal.get('aside-status')
+if (asideStatus !== undefined) {
+   if (asideStatus === 'hide') {
+     document.documentElement.classList.add('hide-aside')
+   } else {
+     document.documentElement.classList.remove('hide-aside')
+   }
+}})()</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" data-lazy-src="https://i.loli.net/2019/11/15/JLX6vbUwyaQD4nr.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">105</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">37</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 便签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/messagediv/"><i class="fa-fw fa fa-comment-dots"></i><span> 留言板</span></a></div></div></div></div><div id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://i.loli.net/2020/11/16/31BXRSPoTciFWqx.jpg)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Zyl-Blog</a></span><span id="menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 便签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/messagediv/"><i class="fa-fw fa fa-comment-dots"></i><span> 留言板</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><h1 class="post-title">webpack小结-2</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-10-22T09:22:53.000Z" title="发表于 2020-10-22 17:22:53">2020-10-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-07-12T02:25:29.648Z" title="更新于 2023-07-12 10:25:29">2023-07-12</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/webpack/">webpack</a></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="webpack-config-js-用处"><a href="#webpack-config-js-用处" class="headerlink" title="webpack.config.js 用处"></a>webpack.config.js 用处</h2><h3 id="在根目录创建-webpack-config-js-进行-webpack-的配置"><a href="#在根目录创建-webpack-config-js-进行-webpack-的配置" class="headerlink" title="在根目录创建 webpack.config.js 进行 webpack 的配置"></a>在根目录创建 webpack.config.js 进行 webpack 的配置</h3><p><strong>作用：指示 webpack 干哪些活(当你运行 webpack 指令时,会加载里面的配置)</strong><br><strong>所有构件工具都是基于 node.js 平台运行的,模块化默认采用 common.js</strong></p>
+<hr>
+<h2 id="打包样式资源"><a href="#打包样式资源" class="headerlink" title="打包样式资源"></a>打包样式资源</h2><p><strong>下载完 loader 之后,在 webpack.config.js 中的 module-rules 下进行配置即可</strong></p>
+<ul>
+<li><p>解析 css 资源</p>
+<p><code>npm i style-loader css-loader -D</code></p>
+</li>
+<li><p>解析 less 资源</p>
+<p><code>npm i less less-loader -D</code></p>
+</li>
+<li><p>解析 scss 资源</p>
+<p><code>npm i node-sass sass-loader -D</code></p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//resolve用来拼接绝对路径的方法</span></span><br><span class="line"><span class="keyword">const</span> &#123; resolve &#125; = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  <span class="comment">//webpack配置</span></span><br><span class="line">  entry: <span class="string">&#x27;./src/index.js&#x27;</span>, <span class="comment">//入口起点</span></span><br><span class="line">  output: &#123;</span><br><span class="line">    filename: <span class="string">&#x27;main.js&#x27;</span>, <span class="comment">//输出的文件名</span></span><br><span class="line">    path: resolve(__dirname, <span class="string">&#x27;build&#x27;</span>), <span class="comment">//输出的路径</span></span><br><span class="line">    <span class="comment">// __dirname node.js的变量,代表当前文件的目录绝对路径</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">//   loader配置：1.下载 2.使用(配置loader)</span></span><br><span class="line">  <span class="built_in">module</span>: &#123;</span><br><span class="line">    <span class="comment">// 规则</span></span><br><span class="line">    rules: [</span><br><span class="line">      <span class="comment">//详细的loader配置</span></span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.css$/</span>, <span class="comment">//正则表示比配哪些文件</span></span><br><span class="line">        use: [</span><br><span class="line">          <span class="comment">//use数组中的loader执行顺序是：从右到左,从下到上一次执行</span></span><br><span class="line">          <span class="string">&#x27;style-loader&#x27;</span>, <span class="comment">//创建style标签,将js中的样式资源插入进去,添加到header中生效</span></span><br><span class="line">          <span class="string">&#x27;css-loader&#x27;</span>, <span class="comment">//将css文件变成common.js模块加载到js中,里面内容是样式字符串</span></span><br><span class="line">        ],</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.less$/</span>,</span><br><span class="line">        use: [</span><br><span class="line">          <span class="comment">//数组内的loader顺序固定,从下往上，从后往前依次编译,且每个对象中的loader不共享,所以这个对象中需要3个loader,而不是less-loader这一个；</span></span><br><span class="line">          <span class="string">&#x27;style-loader&#x27;</span>,</span><br><span class="line">          <span class="string">&#x27;css-loader&#x27;</span>,</span><br><span class="line">          <span class="string">&#x27;less-loader&#x27;</span>, <span class="comment">//将less文件编译为css文件</span></span><br><span class="line">        ],</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.scss$/</span>,</span><br><span class="line">        use: [</span><br><span class="line">          <span class="string">&#x27;style-loader&#x27;</span>,</span><br><span class="line">          <span class="string">&#x27;css-loader&#x27;</span>,</span><br><span class="line">          <span class="string">&#x27;sass-loader&#x27;</span>, <span class="comment">//将scss文件编译为css文件</span></span><br><span class="line">        ],</span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">//   plugins配置</span></span><br><span class="line">  plugins: [],</span><br><span class="line">  <span class="comment">//   指定打包模式</span></span><br><span class="line">  mode: <span class="string">&#x27;development&#x27;</span>, <span class="comment">//开发模式(development)和生产模式(produciton)</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="打包-html-资源"><a href="#打包-html-资源" class="headerlink" title="打包 html 资源"></a>打包 html 资源</h2><ol>
+<li>首先需要下载插件 <code>npm i html-webpack-plugin -D</code></li>
+<li>之后要在<code>webpack.config.js</code>中,头部进行引用</li>
+<li>最后在<code>plugins</code>中进行配置</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; resolve &#125; = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> HtmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">&#x27;html-webpack-plugin&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry: <span class="string">&#x27;./src/index.js&#x27;</span>,</span><br><span class="line">  output: &#123;</span><br><span class="line">    filename: <span class="string">&#x27;main.js&#x27;</span>,</span><br><span class="line">    path: resolve(__dirname, <span class="string">&#x27;build&#x27;</span>),</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="built_in">module</span>: &#123;&#125;,</span><br><span class="line">  plugins: [</span><br><span class="line">    <span class="comment">//   plugins配置 1.下载 2.引用 3.使用</span></span><br><span class="line">    <span class="comment">//html-webpack-plugin</span></span><br><span class="line">    <span class="comment">//功能：默认会创建一个空的HTML,自动引入打包的所有资源(js/css)</span></span><br><span class="line">    <span class="keyword">new</span> HtmlWebpackPlugin(&#123;</span><br><span class="line">      <span class="comment">//复制&#x27;./src/index.html&#x27;文件，并自动引入打包输出的所有资源(js/css)</span></span><br><span class="line">      template: <span class="string">&#x27;./src/index.html&#x27;</span>,</span><br><span class="line">    &#125;),</span><br><span class="line">  ],</span><br><span class="line">  mode: <span class="string">&#x27;development&#x27;</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="打包图片资源"><a href="#打包图片资源" class="headerlink" title="打包图片资源"></a>打包图片资源</h2><ul>
+<li><p>如果图片资源在 css 内,如<code>background-image</code>：</p>
+<ol>
+<li>使用命令行下载 loader: <code>npm i url-loader file-loader -D</code></li>
+<li>在<code>webpack.config.js</code>中配置即可</li>
+</ol>
+</li>
+<li><p>如果图片资源在 html 内,如<code>img</code>,在还要额外下载 loader: <code>npm i html-loader -D</code></p>
+<ol>
+<li>注意：因为在 src 下的 html 中的 img 使用的是相对路径,所以打包后的 html 并找不到此路径下的文件资源,所以需要在<code>outout下为publicPath指定路径</code></li>
+</ol>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; resolve &#125; = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> HtmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">&#x27;html-webpack-plugin&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry: <span class="string">&#x27;./src/index.js&#x27;</span>,</span><br><span class="line">  output: &#123;</span><br><span class="line">    filename: <span class="string">&#x27;main.js&#x27;</span>,</span><br><span class="line">    path: resolve(__dirname, <span class="string">&#x27;build&#x27;</span>),</span><br><span class="line">    publicPath: <span class="string">&#x27;./&#x27;</span>, <span class="comment">//在这里指定公共路径</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="built_in">module</span>: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.css$/</span>,</span><br><span class="line">        use: [</span><br><span class="line">          <span class="string">&#x27;style-loader&#x27;</span>,</span><br><span class="line">          <span class="string">&#x27;css-loader&#x27;</span>,</span><br><span class="line">        ],</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="comment">//处理图片资源</span></span><br><span class="line">        test: <span class="regexp">/\.(jpg|png|gif)$/</span>,</span><br><span class="line">        loader: <span class="string">&#x27;url-loader&#x27;</span>, <span class="comment">//多个为数组,只写一个的话可以为loader:的字符串</span></span><br><span class="line">        options: &#123;</span><br><span class="line">          <span class="comment">/*图片大小小于8kb,就会被base64处理,一般为8-12kb</span></span><br><span class="line"><span class="comment">            优点:减少请求数量(减轻服务器压力)</span></span><br><span class="line"><span class="comment">            缺点:图片体积会更大(文件请求速度更慢)*/</span></span><br><span class="line">          limit: <span class="number">8</span> * <span class="number">1024</span>,</span><br><span class="line">          <span class="comment">/*给图片重命名,</span></span><br><span class="line"><span class="comment">            [hash:10]表示取图片的hash的前10位,</span></span><br><span class="line"><span class="comment">            [ext]表示取文件原来的扩展名</span></span><br><span class="line"><span class="comment">          */</span></span><br><span class="line">          name: <span class="string">&#x27;[hash:10].[ext]&#x27;</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.html$/</span>, <span class="comment">//处理html文件的img图片(负责引入img,从而能被url-loader进行处理)</span></span><br><span class="line">        loader: <span class="string">&#x27;html-loader&#x27;</span>,</span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">  plugins: [</span><br><span class="line">    <span class="keyword">new</span> HtmlWebpackPlugin(&#123;</span><br><span class="line">      template: <span class="string">&#x27;./src/index.html&#x27;</span>,</span><br><span class="line">    &#125;),</span><br><span class="line">  ],</span><br><span class="line">  mode: <span class="string">&#x27;development&#x27;</span>,</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="打包其他资源"><a href="#打包其他资源" class="headerlink" title="打包其他资源"></a>打包其他资源</h2><p><strong>其他资源(除了 html/js/css 资源以外的资源)-不需要做任何处理，直接原封不动的输出出去就可以了的</strong></p>
+<ol>
+<li>首先使用<code>npm i file-loader -D</code>下载</li>
+<li>然后在<code>webpack.config.js</code>中配置即可</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; resolve &#125; = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> HtmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">&#x27;html-webpack-plugin&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry: <span class="string">&#x27;./src/index.js&#x27;</span>,</span><br><span class="line">  output: &#123;</span><br><span class="line">    filename: <span class="string">&#x27;main.js&#x27;</span>,</span><br><span class="line">    path: resolve(__dirname, <span class="string">&#x27;build&#x27;</span>),</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="built_in">module</span>: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.css$/</span>,</span><br><span class="line">        use: [<span class="string">&#x27;style-loader&#x27;</span>, <span class="string">&#x27;css-loader&#x27;</span>],</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="comment">/*  test-为匹配,exclude-为排除</span></span><br><span class="line"><span class="comment">            exclude: /\.(css|js|html|jpg|png|gif|less...)$/ */</span></span><br><span class="line">        test: <span class="regexp">/\.(eot|svg|ttf|woff|woff2)/</span>,</span><br><span class="line">        loader: <span class="string">&#x27;file-loader&#x27;</span>,</span><br><span class="line">        options: &#123;</span><br><span class="line">          name: <span class="string">&#x27;[hash:10].[ext]&#x27;</span>, <span class="comment">//使打包后的文件名短一些</span></span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">  plugins: [</span><br><span class="line">    <span class="keyword">new</span> HtmlWebpackPlugin(&#123;</span><br><span class="line">      template: <span class="string">&#x27;./src/index.html&#x27;</span>,</span><br><span class="line">    &#125;),</span><br><span class="line">  ],</span><br><span class="line">  mode: <span class="string">&#x27;development&#x27;</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="本地服务器-devServer"><a href="#本地服务器-devServer" class="headerlink" title="本地服务器 devServer"></a>本地服务器 devServer</h2><p><strong>使用<code>npm i webpack-dev-server -D</code>下载,之后在进行配置</strong><br><strong>开发服务器 devServe-用来自动化(自动编译,自动打开浏览器，自动刷新浏览器….)</strong><br><strong>特点：只会在内存中编译打包,不会有任何输出,防止了每次修改后都要重新打包编译才能看到效果</strong><br><strong>启动 devServe 指令为: <code>npx webpack-dev-server</code>/webpack5 以上为<code>npx webpack serve</code></strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; resolve &#125; = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> HtmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">&#x27;html-webpack-plugin&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry: <span class="string">&#x27;./src/index.js&#x27;</span>,</span><br><span class="line">  output: &#123;</span><br><span class="line">    filename: <span class="string">&#x27;main.js&#x27;</span>,</span><br><span class="line">    path: resolve(__dirname, <span class="string">&#x27;build&#x27;</span>),</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="built_in">module</span>: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.css$/</span>,</span><br><span class="line">        use: [<span class="string">&#x27;style-loader&#x27;</span>, <span class="string">&#x27;css-loader&#x27;</span>],</span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">  plugins: [</span><br><span class="line">    <span class="keyword">new</span> HtmlWebpackPlugin(&#123;</span><br><span class="line">      template: <span class="string">&#x27;./src/index.html&#x27;</span>,</span><br><span class="line">    &#125;),</span><br><span class="line">  ],</span><br><span class="line">  mode: <span class="string">&#x27;development&#x27;</span>,</span><br><span class="line">  devServer: &#123;</span><br><span class="line">    contentBase: resolve(__dirname, <span class="string">&#x27;build&#x27;</span>), <span class="comment">//项目构建后的路径</span></span><br><span class="line">    compress: <span class="literal">true</span>, <span class="comment">//启动gzip压缩</span></span><br><span class="line">    port: <span class="number">3000</span>, <span class="comment">//端口号</span></span><br><span class="line">    open: <span class="literal">true</span>, <span class="comment">//自动打开浏览器</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="分类打包输出"><a href="#分类打包输出" class="headerlink" title="分类打包输出"></a>分类打包输出</h2><p><strong>每次打包输出都会在 build 文件夹下生成许多文件,为了打包后的文件清晰,我们可以在配置中的<code>module-rules-options-outputPath</code>来指定打包后的文件夹</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; resolve &#125; = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> HtmlWebpackPlugins = <span class="built_in">require</span>(<span class="string">&#x27;html-webpack-plugin&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry: <span class="string">&#x27;./src/js/index.js&#x27;</span>,</span><br><span class="line">  output: &#123;</span><br><span class="line">    filename: <span class="string">&#x27;js/main.js&#x27;</span>,</span><br><span class="line">    path: resolve(__dirname, <span class="string">&#x27;build&#x27;</span>),</span><br><span class="line">    publicPath: <span class="string">&#x27;./&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="built_in">module</span>: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.scss$/</span>,</span><br><span class="line">        use: [<span class="string">&#x27;style-loader&#x27;</span>, <span class="string">&#x27;css-loader&#x27;</span>, <span class="string">&#x27;sass-loader&#x27;</span>],</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.css$/</span>,</span><br><span class="line">        use: [<span class="string">&#x27;style-loader&#x27;</span>, <span class="string">&#x27;css-loader&#x27;</span>],</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.(png|jpg|gif)$/</span>,</span><br><span class="line">        loader: <span class="string">&#x27;url-loader&#x27;</span>,</span><br><span class="line">        options: &#123;</span><br><span class="line">          limit: <span class="number">8</span> * <span class="number">1024</span>,</span><br><span class="line">          name: <span class="string">&#x27;[hash:10].[ext]&#x27;</span>,</span><br><span class="line">          outputPath: <span class="string">&#x27;imgs&#x27;</span>, <span class="comment">//这里的outputPath设置,便是设置此类文件打包后所去往的去处</span></span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.html$/</span>,</span><br><span class="line">        loader: <span class="string">&#x27;html-loader&#x27;</span>,</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.(eot|woff|woff2|ttf|svg)$/</span>,</span><br><span class="line">        loader: <span class="string">&#x27;file-loader&#x27;</span>,</span><br><span class="line">        options: &#123;</span><br><span class="line">          name: <span class="string">&#x27;[hash:10].[ext]&#x27;</span>,</span><br><span class="line">          outputPath: <span class="string">&#x27;fonts&#x27;</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">  plugins: [</span><br><span class="line">    <span class="keyword">new</span> HtmlWebpackPlugins(&#123;</span><br><span class="line">      template: <span class="string">&#x27;./src/index.html&#x27;</span>,</span><br><span class="line">    &#125;),</span><br><span class="line">  ],</span><br><span class="line">  mode: <span class="string">&#x27;development&#x27;</span>,</span><br><span class="line">  devServer: &#123;</span><br><span class="line">    contentBase: resolve(__dirname, <span class="string">&#x27;build&#x27;</span>),</span><br><span class="line">    compress: <span class="literal">true</span>,</span><br><span class="line">    open: <span class="literal">true</span>,</span><br><span class="line">    port: <span class="number">3000</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">走夜路</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://www.zyl-blog.top/2020/10/22/webpack5-summary2/">https://www.zyl-blog.top/2020/10/22/webpack5-summary2/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.zyl-blog.top" target="_blank">Zyl-Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/node/">node</a><a class="post-meta__tags" href="/tags/webpack/">webpack</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2020/11/16/31BXRSPoTciFWqx.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://i.loli.net/2019/11/15/QI2KUmSHwzn6Za8.jpg" target="_blank"><img class="post-qr-code-img" data-lazy-src="https://i.loli.net/2019/11/15/QI2KUmSHwzn6Za8.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://i.loli.net/2019/11/15/rZOMKTadlJQX6mp.jpg" target="_blank"><img class="post-qr-code-img" data-lazy-src="https://i.loli.net/2019/11/15/rZOMKTadlJQX6mp.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/10/26/webpack5-summary3/"><img class="prev-cover" data-lazy-src="https://i.loli.net/2020/11/16/31BXRSPoTciFWqx.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">webpack5小结-3</div></div></a></div><div class="next-post pull-right"><a href="/2020/10/22/webpack5-summary1/"><img class="next-cover" data-lazy-src="https://i.loli.net/2020/11/16/31BXRSPoTciFWqx.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">webpack小结-1</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2020/10/26/webpack5-summary4/" title="webpack5小结-4"><img class="cover" data-lazy-src="https://i.loli.net/2020/11/16/31BXRSPoTciFWqx.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-10-26</div><div class="title">webpack5小结-4</div></div></a></div><div><a href="/2020/10/22/webpack5-summary1/" title="webpack小结-1"><img class="cover" data-lazy-src="https://i.loli.net/2020/11/16/31BXRSPoTciFWqx.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-10-22</div><div class="title">webpack小结-1</div></div></a></div><div><a href="/2020/10/26/webpack5-summary3/" title="webpack5小结-3"><img class="cover" data-lazy-src="https://i.loli.net/2020/11/16/31BXRSPoTciFWqx.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-10-26</div><div class="title">webpack5小结-3</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside_content" id="aside_content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><img class="avatar-img" data-lazy-src="https://i.loli.net/2019/11/15/JLX6vbUwyaQD4nr.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">走夜路</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">105</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">37</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/ZhangyilinCN" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:18632132186@163.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div></div><div class="card-widget card-announcement"><div class="card-content"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">欢迎来访~ o(*￣▽￣*)ブ</div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="card-content"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#webpack-config-js-%E7%94%A8%E5%A4%84"><span class="toc-number">1.</span> <span class="toc-text">webpack.config.js 用处</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8%E6%A0%B9%E7%9B%AE%E5%BD%95%E5%88%9B%E5%BB%BA-webpack-config-js-%E8%BF%9B%E8%A1%8C-webpack-%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="toc-number">1.1.</span> <span class="toc-text">在根目录创建 webpack.config.js 进行 webpack 的配置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%93%E5%8C%85%E6%A0%B7%E5%BC%8F%E8%B5%84%E6%BA%90"><span class="toc-number">2.</span> <span class="toc-text">打包样式资源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%93%E5%8C%85-html-%E8%B5%84%E6%BA%90"><span class="toc-number">3.</span> <span class="toc-text">打包 html 资源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%93%E5%8C%85%E5%9B%BE%E7%89%87%E8%B5%84%E6%BA%90"><span class="toc-number">4.</span> <span class="toc-text">打包图片资源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%93%E5%8C%85%E5%85%B6%E4%BB%96%E8%B5%84%E6%BA%90"><span class="toc-number">5.</span> <span class="toc-text">打包其他资源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E6%9C%8D%E5%8A%A1%E5%99%A8-devServer"><span class="toc-number">6.</span> <span class="toc-text">本地服务器 devServer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E7%B1%BB%E6%89%93%E5%8C%85%E8%BE%93%E5%87%BA"><span class="toc-number">7.</span> <span class="toc-text">分类打包输出</span></a></li></ol></div></div></div><div class="card-widget card-recent-post"><div class="card-content"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/07/26/cascader-data-processing/" title="Cascader级联选择器的value处理"><img data-lazy-src="https://i.loli.net/2020/11/16/31BXRSPoTciFWqx.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Cascader级联选择器的value处理"/></a><div class="content"><a class="title" href="/2024/07/26/cascader-data-processing/" title="Cascader级联选择器的value处理">Cascader级联选择器的value处理</a><time datetime="2024-07-26T09:29:31.000Z" title="发表于 2024-07-26 17:29:31">2024-07-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/26/ol-request-header-processing/" title="ol地图源+token"><img data-lazy-src="https://i.loli.net/2020/11/16/31BXRSPoTciFWqx.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ol地图源+token"/></a><div class="content"><a class="title" href="/2024/07/26/ol-request-header-processing/" title="ol地图源+token">ol地图源+token</a><time datetime="2024-07-26T09:23:46.000Z" title="发表于 2024-07-26 17:23:46">2024-07-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/26/el-table-dislocation/" title="el-table错位问题"><img data-lazy-src="https://i.loli.net/2020/11/16/31BXRSPoTciFWqx.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="el-table错位问题"/></a><div class="content"><a class="title" href="/2024/07/26/el-table-dislocation/" title="el-table错位问题">el-table错位问题</a><time datetime="2024-07-26T09:20:19.000Z" title="发表于 2024-07-26 17:20:19">2024-07-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/26/cesium-offline-processing/" title="cesium的离线处理"><img data-lazy-src="https://i.loli.net/2020/11/16/31BXRSPoTciFWqx.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="cesium的离线处理"/></a><div class="content"><a class="title" href="/2024/07/26/cesium-offline-processing/" title="cesium的离线处理">cesium的离线处理</a><time datetime="2024-07-26T09:10:47.000Z" title="发表于 2024-07-26 17:10:47">2024-07-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/11/14/echarts-teshu/" title="多图重叠带icon的柱形图"><img data-lazy-src="https://i.loli.net/2020/11/16/31BXRSPoTciFWqx.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="多图重叠带icon的柱形图"/></a><div class="content"><a class="title" href="/2023/11/14/echarts-teshu/" title="多图重叠带icon的柱形图">多图重叠带icon的柱形图</a><time datetime="2023-11-14T03:19:15.000Z" title="发表于 2023-11-14 11:19:15">2023-11-14</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2024 By 走夜路</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">你居然会看到底，厉害了呢！</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="algolia-search"><div class="search-dialog"><div class="search-dialog__title" id="algolia-search-title">Algolia</div><div id="algolia-input-panel"><div id="algolia-search-input"></div></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-stats"></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="/js/search/algolia.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    let initData = {
+      el: '#vcomment',
+      appId: 'UR16iGMFnb6y0Tqfb5mfij4N-gzGzoHsz',
+      appKey: 'T7yELOcuK3kfTCdapfDdNFyB',
+      placeholder: '罒ω罒 造作起来啊~',
+      avatar: 'monsterid',
+      meta: 'nick,mail,link'.split(','),
+      pageSize: '10',
+      lang: 'en',
+      recordIP: false,
+      serverURLs: '',
+      emojiCDN: '',
+      emojiMaps: "",
+      enableQQ: false,
+      path: window.location.pathname,
+    }
+
+    if (true) { 
+      initData.requiredFields= ('nick,mail'.split(','))
+    }
+    
+    if (false) {
+      const otherData = false
+      initData = Object.assign({}, initData, otherData)
+    }
+    
+    const valine = new Valine(initData)
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else $.getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js', initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.querySelector('#vcomment'),loadValine)
+  else setTimeout(() => loadValine(), 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="/js/live2d-widget/autoload.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script></div></body></html>

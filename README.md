@@ -5,10 +5,10 @@ zyl-blog
 hexo new xxxx
 
 ### 清除hexo文件
-hexo clear
+hexo clean
 
 ### 本地测试
-hexo -s
+hexo server
 
 ### 上传到master
 hexo g -d
